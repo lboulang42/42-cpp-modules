@@ -5,7 +5,7 @@
  - Corrected : ❌
 
 ## CPP 01
- - Finished : ❌
+ - Finished : ✅
  - Corrected : ❌
 
 ## CPP 02
