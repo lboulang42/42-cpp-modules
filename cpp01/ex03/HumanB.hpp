@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 18:18:10 by lboulang          #+#    #+#             */
-/*   Updated: 2023/12/31 18:34:32 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:37:42 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class HumanB
 		~HumanB();
 		void attack();
 		void setWeapon(Weapon &weapon);
-		
 };
 
 #endif

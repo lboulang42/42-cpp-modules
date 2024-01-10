@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:30:07 by lboulang          #+#    #+#             */
-/*   Updated: 2023/12/30 17:38:45 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:55:36 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,18 @@ std::string Contact::AddField(std::string name)
 	if (std::cin.eof())
 		exit(1);
 	if (field.empty())
-		return ((std::cout << "Your Contact can't have and empty field !"), "");
+		return ((std::cout << "Your Contact can't have and empty field !\n"), "");
+	int i;
+	for (i=0; field[i]; i++)
+		if (field[i] != ' ' && field[i] != '\t' && field[i] != '\n')
+			break;
+	field.erase(0, i);
 	for (int i = 0; field[i]; i++)
+	{
 		if (!isspace(field[i]))
 			return (field);
-	return ((std::cout << "Your Contact can't have and empty field !"), "");
+	}
+	return ((std::cout << "Your Contact can't have and empty field !\n"), "");
 }
 
 int Contact::Add()

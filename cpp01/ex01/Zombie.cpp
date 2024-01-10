@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 18:15:26 by lboulang          #+#    #+#             */
-/*   Updated: 2023/12/31 17:46:18 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:18:03 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,9 @@ void Zombie::announce(void)
 	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie &Zombie::operator=(const Zombie &other)
-{
-	// std::cout << "Assignation operator called" << std::endl;
-	this->name = other.name;
-	return *this;
-}
-
 Zombie::Zombie()
 {
-	// std::cout << "Zombie created" << std::endl;
+	std::cout << "Zombie created" << std::endl;
 }
 
 /*
@@ -54,10 +47,4 @@ Called when exiting scope of zombie created on stack
 Zombie::~Zombie()
 {
 	std::cout << "Destroying Zombie named " << name << std::endl;
-}
-
-Zombie::Zombie(const Zombie &value)
-{
-	// std::cout << "Copy constructor called" << std::endl;
-	*this = value;
 }

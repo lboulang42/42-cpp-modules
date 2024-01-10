@@ -6,12 +6,17 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:44:49 by lboulang          #+#    #+#             */
-/*   Updated: 2023/12/30 17:21:43 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:07:38 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
+/*
+./megaphone "shhhhh... I think the students are asleep..."
+./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
+./megaphone
+*/
 int main(int ac, char **av)
 {
 	if (ac < 2)

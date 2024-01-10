@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 18:17:36 by lboulang          #+#    #+#             */
-/*   Updated: 2023/12/31 17:56:27 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:33:32 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ Puis :
 • La valeur de la string.
 • La valeur pointée par stringPTR.
 • La valeur pointée par stringREF.
+
+C’est tout. Il n’y a pas de pièges. 
+Le but de cet exercice est de vous faire démystifier les références qui ne sont pas un concept totalement nouveau. 
+Bien qu’il y ait de légères différences, il s’agit seulement d’une autre syntaxe pour représenter quelque chose que vous faites déjà : manipuler des adresses.
 */
 #include <iostream>
 

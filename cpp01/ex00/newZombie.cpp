@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 18:37:06 by lboulang          #+#    #+#             */
-/*   Updated: 2023/12/31 13:51:18 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:30:33 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ scope of the function. (+/- like alloc)
 */
 Zombie* newZombie(std::string name)
 {
-	// std::cout << "Using new zombie" << std::endl;
 	Zombie *zomb = new Zombie;	
 	zomb->setname(name);
 	return (zomb);

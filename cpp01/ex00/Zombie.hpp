@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 18:18:19 by lboulang          #+#    #+#             */
-/*   Updated: 2023/12/31 13:49:53 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:30:06 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ class Zombie
 	public:
 		Zombie(); /*Constructeur par defaut*/
 		~Zombie(); /*Destructeur*/
-		Zombie(const Zombie& value); /*Constructeur de recopie*/
-		Zombie& operator=(const Zombie& other); /*Operator d'affectation*/
-		
 		void announce( void );
 		void setname(std::string name);
 };
