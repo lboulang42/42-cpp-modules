@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:01:02 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/10 17:43:37 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:43:26 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,21 @@ int	main(int ac, char **av)
 	std::string outfile_name = infile_name + ".replace";
 	std::ofstream outfile(outfile_name.c_str());
 	if (!outfile.is_open())
+	{
+		infile.close();
 		return ((std::cout << "File : '" << infile_name << "' can't be opened" << std::endl), 1);
+	}
 
 	/*get infile content*/	
 	std::string infile_content;
 	std::string s1 = av[2];
-
 	std::string s2 = av[3];
 	getline(infile, infile_content, '\0');
 	if (s1 == "")
 	{
 		outfile << infile_content;
+		infile.close();
+		outfile.close();
 		return (0);
 	}
 	while (infile_content.find(av[2]) != std::string::npos)

@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 18:15:26 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/10 16:30:25 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/10 20:11:19 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ Zombie::~Zombie()
 {
 	std::cout << "Destroying Zombie named " << name << std::endl;
 }
-
