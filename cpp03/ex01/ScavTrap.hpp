@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:52:49 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/12 20:17:27 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:52:05 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ class ScavTrap : public ClapTrap
   public:
     /*Constructeur par defaut*/
     ScavTrap(std::string name);
+    ScavTrap(ScavTrap const &src);
+    /*Destructeur*/
     ~ScavTrap(void);
+    /*Operator =*/  
+    ScavTrap &operator=(ScavTrap const &rhs);
+
+    void attack(std::string const & target);
+
     void guardGet(void);
 };
 

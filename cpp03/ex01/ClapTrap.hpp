@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:35:07 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/12 20:17:17 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:50:28 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ class ClapTrap
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 
-
-  protected:
+  protected : 
     std::string _name;
     int _hitpoints;
     int _energyPoints;
