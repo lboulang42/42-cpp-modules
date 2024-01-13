@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:06:16 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/12 18:50:05 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:35:01 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	for (int i = 0; i < 15; i++)
 	{
 		a.attack("user B");
-		b.takeDamage(0);
+		a.beRepaired(i);
+		b.takeDamage(i/2);
 	}	
-
 }
