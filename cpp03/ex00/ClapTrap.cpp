@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:36:22 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 15:38:14 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:15:35 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 }
 
 
-
-
 /*When ClapTrack attacks, it causes its target to lose <attack damage> hit points.*/
 /* Attacking and repairing cost 1 energy point each. */
 void ClapTrap::attack(std::string const & target)
@@ -62,7 +60,6 @@ void ClapTrap::attack(std::string const & target)
     this->_energyPoints -= 1;
 
 }
-
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
@@ -85,5 +82,3 @@ void ClapTrap::beRepaired(unsigned int amount)
     this->_energyPoints -= 1;
     std::cout << "ClapTrap " << this->_name << " repairs itself, it gets " << amount << " hit points back!" << std::endl;
 }
-
-

@@ -6,17 +6,16 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:36:22 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 15:53:02 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:15:39 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-
 /*Constructeur par defaut*/
 ClapTrap::ClapTrap(std::string name)
 {
-    std::cout << "(this is a claptrap method)" << std::endl;
+    std::cout << "[CLAPTRAP METHOD] - ";
 	std::cout << "ClapTrap constructor Name called with name :" << name << std::endl;
 	this->_name = name;
 	this->_hitpoints = 10;
@@ -27,7 +26,7 @@ ClapTrap::ClapTrap(std::string name)
 /*Constructeur de recopie*/
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
-    std::cout << "(this is a claptrap method)" << std::endl;
+    std::cout << "[CLAPTRAP METHOD] - ";
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
@@ -35,14 +34,14 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 /*Destructeur*/
 ClapTrap::~ClapTrap()
 {
-    std::cout << "(this is a claptrap method)" << std::endl;
+    std::cout << "[CLAPTRAP METHOD] - ";
 	std::cout << "ClapTrap " << this->_name << " destructor called " << std::endl;
 }
 
 /*Operator =*/
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 {
-    std::cout << "(this is a claptrap method)" << std::endl;
+    std::cout << "[CLAPTRAP METHOD] - ";
 	std::cout << "ClapTrap operator= called" << std::endl;
 	this->_name = rhs._name;
 	this->_hitpoints = rhs._hitpoints;
@@ -51,14 +50,11 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 	return (*this);
 }
 
-
-
-
 /*When ClapTrack attacks, it causes its target to lose <attack damage> hit points.*/
 /* Attacking and repairing cost 1 energy point each. */
 void ClapTrap::attack(std::string const & target)
 {
-    std::cout << "(this is a claptrap method)" << std::endl;
+    std::cout << "[CLAPTRAP METHOD] - ";
 	if (this->_hitpoints < 1)
 		return ((void)(std::cout << "ClapTrap " << this->_name << " Is Dead (0 hit points)!" << std::endl));
 	if (this->_energyPoints < 1)
@@ -68,13 +64,11 @@ void ClapTrap::attack(std::string const & target)
 
 }
 
-
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "(this is a claptrap method)" << std::endl;
+    std::cout << "[CLAPTRAP METHOD] - ";
 	if (this->_hitpoints < 1)
 		return ((void)(std::cout << "Stop Attacking ClapTrap " << this->_name << " its already dead! :(" << std::endl));
-
 	std::cout << "ClapTrap " << this->_name << " takes " << amount << " points of damage!" << std::endl;
 	this->_hitpoints -= amount;
 }
@@ -83,7 +77,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 /* Attacking and repairing cost 1 energy point each. */
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    std::cout << "(this is a claptrap method)" << std::endl;
+    std::cout << "[CLAPTRAP METHOD] - ";
 	if (this->_hitpoints < 1)
 		return ((void)(std::cout << "ClapTrap " << this->_name << " Is Dead (0 hit points)!" << std::endl));
 	if (this->_energyPoints < 1)

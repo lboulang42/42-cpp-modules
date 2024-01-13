@@ -6,7 +6,7 @@
 #    By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 17:59:57 by lboulang          #+#    #+#              #
-#    Updated: 2024/01/12 20:00:41 by lboulang         ###   ########.fr        #
+#    Updated: 2024/01/13 16:13:25 by lboulang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes
 #                                  MAKEFILE                                    #
 ################################################################################
 
-NAME = ClapTrap
+NAME = ScavTrap
 
 all : $(NAME)
 
