@@ -1,46 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*   WrongCat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:36:22 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 17:43:31 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 13:53:52 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 14:03:06 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-
-/*Constructeur par defaut*/
-WrongCat::WrongCat() : WrongAnimal()
+WrongCat::WrongCat()
 {
-    std::cout << "[MIAW MIAW] - ";
+    std::cout << "[WRONG CAT] - ";
     std::cout << "WrongCat constructor called" << std::endl;
     this->_type = "WrongCat";
 }
 
-/*Constructeur de recopie*/
-WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
+WrongCat::WrongCat(WrongCat &src)
 {
-    std::cout << "[MIAW MIAW] - ";
-	std::cout << "WrongCat Copy constructor called" << std::endl;
-	*this = src;
+    std::cout << "[WRONG CAT] - ";
+    std::cout << "WrongCat copy constructor called" << std::endl;
+    *this = src;
 }
 
-/*Destructeur*/
 WrongCat::~WrongCat()
 {
-    std::cout << "[MIAW MIAW] - ";
-    std::cout << "WrongCat destructor called " << std::endl;
+    std::cout << "[WRONG CAT] - ";
+    std::cout << "WrongCat destructor called" << std::endl;
 }
 
-/*Operator =*/
-WrongCat &WrongCat::operator=(WrongCat const &rhs)
+WrongCat &WrongCat::operator=(WrongCat const &src)
 {
-    std::cout << "[MIAW MIAW] - ";
+    std::cout << "[WRONG CAT] - ";
     std::cout << "WrongCat operator= called" << std::endl;
-    this->_type = rhs._type;   
+    this->_type = src._type;
     return (*this);
+}
+
+void WrongCat::makeSound() const
+{
+    std::cout << "[WRONG CAT] - ";
+    std::cout << "makeSound called" << std::endl;
+    std::cout << "GRAOUUUUUUUU" << std::endl;
 }

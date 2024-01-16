@@ -1,46 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:36:22 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 17:05:54 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 13:53:52 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 14:03:06 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-
-/*Constructeur par defaut*/
-Dog::Dog() : Animal()
+Dog::Dog()
 {
-    std::cout << "[BARK BARK BARK] - ";
+    std::cout << "[DOG] - ";
     std::cout << "Dog constructor called" << std::endl;
     this->_type = "Dog";
 }
 
-/*Constructeur de recopie*/
-Dog::Dog(Dog const &src)
+Dog::Dog(Dog &src)
 {
-    std::cout << "[BARK BARK BARK] - ";
-	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+    std::cout << "[DOG] - ";
+    std::cout << "Dog copy constructor called" << std::endl;
+    *this = src;
 }
 
-/*Destructeur*/
 Dog::~Dog()
 {
-    std::cout << "[BARK BARK BARK] - ";
-    std::cout << "Dog destructor called " << std::endl;
+    std::cout << "[DOG] - ";
+    std::cout << "Dog destructor called" << std::endl;
 }
 
-/*Operator =*/
-Dog &Dog::operator=(Dog const &rhs)
+Dog &Dog::operator=(Dog const &src)
 {
-    std::cout << "[BARK BARK BARK] - ";
+    std::cout << "[DOG] - ";
     std::cout << "Dog operator= called" << std::endl;
-    this->_type = rhs._type;
+    this->_type = src._type;
     return (*this);
+}
+
+void Dog::makeSound() const
+{
+    std::cout << "[DOG] - ";
+    std::cout << "makeSound called" << std::endl;
+    std::cout << "BARK BARK BARK" << std::endl;
 }

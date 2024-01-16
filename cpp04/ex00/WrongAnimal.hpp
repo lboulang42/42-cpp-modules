@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 17:36:49 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 17:38:00 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 13:53:03 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 14:24:53 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,18 @@
 
 class WrongAnimal
 {
-  public:
-	/*Constructeur par defaut*/
-    WrongAnimal();
-    /*Constructeur de recopie*/
-    WrongAnimal(WrongAnimal const &src);
-    /*Destructeur*/
-    ~WrongAnimal(void);
-    /*Operator =*/
-    WrongAnimal &operator=(WrongAnimal const &rhs);
+    public :
+     
+        WrongAnimal();
+        WrongAnimal(WrongAnimal &src);
+        ~WrongAnimal();
+        WrongAnimal &operator=(WrongAnimal const &src);
+    
+        std::string getType(void) const;
+        void makeSound(void) const;
 
-    void makeSound(void) const;  
-    std::string getType(void) const;
-
-  protected :
-    std::string _type;
+    protected :
+        std::string _type;
 };
-
-
 
 #endif

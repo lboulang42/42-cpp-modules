@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:35:07 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 17:27:14 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 13:53:03 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 14:02:49 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,14 @@
 #include "Animal.hpp"
 #include <iostream>
 
-class Cat : public Animal
+class Cat: public Animal
 {
-  public:
-	/*Constructeur par defaut*/
-    Cat();
-    /*Constructeur de recopie*/
-    Cat(Cat const &src);
-    /*Destructeur*/
-    ~Cat(void);
-    /*Operator =*/
-    Cat &operator=(Cat const &rhs);
+    public : 
+        Cat();
+        Cat(Cat &src);
+        ~Cat();
+        Cat &operator=(Cat const &src);
+        void makeSound(void) const;
 };
-
-
 
 #endif
