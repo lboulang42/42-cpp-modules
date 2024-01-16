@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:35:07 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 17:28:28 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 13:53:03 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 18:24:42 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,18 @@
 
 class Animal
 {
-  public:
-	/*Constructeur par defaut*/
-    Animal();
-    /*Constructeur de recopie*/
-    Animal(Animal const &src);
-    /*Destructeur*/
-    ~Animal(void);
-    /*Operator =*/
-    Animal &operator=(Animal const &rhs);
+    public :
+     
+        Animal();
+        virtual ~Animal();
+        Animal(Animal const &src);
+        Animal &operator=(Animal const &src);
+    
+        std::string getType(void) const;
+        virtual void makeSound(void) const;//virtual fait en sorte que la fonction soit redefinie dans les classes derivees 
 
-    void makeSound(void) const;  
-    std::string getType(void) const;
-
-  protected :
-    std::string _type;
+    protected :
+        std::string _type;
 };
-
-
 
 #endif

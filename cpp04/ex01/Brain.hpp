@@ -5,33 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 19:52:04 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 19:53:43 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 15:12:18 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 18:35:29 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_H
-# define BRAIN_H
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 #include <iostream>
 
 class Brain
 {
-    public:
+    public :
         Brain();
-        ~Brain();
         Brain(Brain const &src);
-        Brain &operator=(Brain const &rhs);
-        
-
-        
-
-
-
-
-
-    private:
-        std::string ideas[100];
+        ~Brain();
+        Brain &operator=(Brain const &src);
+        void setIdeas(int i, std::string idea);
+        void showIdeas(void);
+    private :
+        std::string _ideas[100];
 };
 
 #endif

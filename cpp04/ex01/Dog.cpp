@@ -1,48 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:36:22 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 20:15:16 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 13:53:52 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 14:03:06 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-
-/*Constructeur par defaut*/
-Dog::Dog() : Animal()
+Dog::Dog()
 {
-    std::cout << "[BARK BARK BARK] - ";
+    std::cout << "[DOG] - ";
     std::cout << "Dog constructor called" << std::endl;
     this->_type = "Dog";
     this->_brain = new Brain();
 }
 
-/*Constructeur de recopie*/
 Dog::Dog(Dog const &src)
 {
-    std::cout << "[BARK BARK BARK] - ";
-	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+    std::cout << "[DOG] - ";
+    std::cout << "Dog copy constructor called" << std::endl;
+    this->_type = src._type;
+    this->_brain = new Brain(*src._brain);
 }
 
-/*Destructeur*/
 Dog::~Dog()
 {
-    std::cout << "[BARK BARK BARK] - ";
-    std::cout << "Dog destructor called " << std::endl;
-    // delete this->_brain;
+    std::cout << "[DOG] - ";
+    std::cout << "Dog destructor called" << std::endl;
+    delete this->_brain;
 }
 
-/*Operator =*/
-Dog &Dog::operator=(Dog const &rhs)
+Dog &Dog::operator=(Dog const &src)
 {
-    std::cout << "[BARK BARK BARK] - ";
+    std::cout << "[DOG] - ";
     std::cout << "Dog operator= called" << std::endl;
-    this->_type = rhs._type;
+    this->_type = src._type;
+    this->_brain = new Brain(*src._brain);
     return (*this);
+}
+
+void Dog::makeSound() const
+{
+    std::cout << "[DOG] - ";
+    std::cout << "makeSound called" << std::endl;
+    std::cout << "BARK BARK BARK" << std::endl;
+}
+
+void Dog::setIdeas(int i, std::string idea)
+{
+    if (i < 100)
+        this->_brain->setIdeas(i, idea);
+}
+
+void Dog::showIdeas(void)
+{
+   this->_brain->showIdeas();
 }

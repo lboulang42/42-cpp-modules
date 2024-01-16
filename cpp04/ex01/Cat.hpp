@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:35:07 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 20:20:46 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/16 13:53:03 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/16 14:02:49 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 # define CAT_HPP
 
-#include "Animal.hpp"
-#include <iostream>
-#include "Brain.hpp"
-
+# include "Animal.hpp"
+# include "Brain.hpp"
+# include <iostream>
 class Cat : public Animal
 {
   public:
-	/*Constructeur par defaut*/
-    Cat();
-    /*Constructeur de recopie*/
-    Cat(Cat const &src);
-    /*Destructeur*/
-    virtual ~Cat(void);
-    /*Operator =*/
-    Cat &operator=(Cat const &rhs);
+	Cat();
+	Cat(Cat const &src);
+	~Cat();
+	Cat &operator=(Cat const &src);
+	void setIdeas(int i, std::string idea);
+	void showIdeas(void);
+	void makeSound(void) const;
+
   private:
-    Brain *_brain;
+	Brain *_brain;
 };
-
-
 
 #endif

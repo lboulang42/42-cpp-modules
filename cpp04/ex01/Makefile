@@ -6,7 +6,7 @@
 #    By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 17:59:57 by lboulang          #+#    #+#              #
-#    Updated: 2024/01/13 20:04:17 by lboulang         ###   ########.fr        #
+#    Updated: 2024/01/16 15:57:12 by lboulang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,9 @@
 
 SRC_FILES	=	main.cpp\
 			Animal.cpp\
-			Dog.cpp\
 			Cat.cpp\
-			WrongAnimal.cpp\
-			WrongCat.cpp\
-			Brain.cpp
+			Dog.cpp\
+			Brain.cpp\
 
 ################################################################################
 #                                  OBJETS                                      #
