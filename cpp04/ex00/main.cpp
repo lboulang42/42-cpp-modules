@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:01:01 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/16 14:56:15 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:03:15 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 int	main(void)
 {
     /*Subject Main*/
-	// {
-	// 	const Animal *meta = new Animal();
-	// 	const Animal *j = new Dog();
-	// 	const Animal *i = new Cat();
-	// 	std::cout << j->getType() << " " << std::endl;
-	// 	std::cout << i->getType() << " " << std::endl;
-	// 	i->makeSound(); //will output the cat sound!
-	// 	j->makeSound();
-	// 	meta->makeSound();
-	// }
+	{
+		const Animal *meta = new Animal();
+		const Animal *j = new Dog();
+		const Animal *i = new Cat();
+		std::cout << j->getType() << " " << std::endl;
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound(); //will output the cat sound!
+		j->makeSound();
+		meta->makeSound();
+	}
 
     /*Animal/Dog/Cat Test*/
 	{
