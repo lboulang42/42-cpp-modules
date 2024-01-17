@@ -6,7 +6,7 @@
 #    By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 17:59:57 by lboulang          #+#    #+#              #
-#    Updated: 2024/01/16 19:42:05 by lboulang         ###   ########.fr        #
+#    Updated: 2024/01/17 18:22:14 by lboulang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,15 @@
 ################################################################################
 
 SRC_FILES	=	main.cpp\
-				AMateria.cpp\
-				Cure.cpp\
+				Amateria.cpp\
 				Ice.cpp\
+				Character.cpp\
 				ICharacter.cpp\
-				IMateriaSource.cpp\
+				Cure.cpp\
+				MateriaSource.cpp\
+
+				
+
 			
 
 ################################################################################
@@ -40,7 +44,7 @@ CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes
 #                                  MAKEFILE                                    #
 ################################################################################
 
-NAME = Animals
+NAME = Horrible
 
 all : $(NAME)
 

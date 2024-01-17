@@ -5,15 +5,9 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:33:59 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/16 19:38:30 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/17 17:38:31 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/17 17:38:33 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ICharacter.hpp"
-
-
-std::string ICharacter::getName(void) 
-{
-    return (this->_name);
-}

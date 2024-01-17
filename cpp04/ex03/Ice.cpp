@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:31:13 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/16 19:39:15 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/17 16:54:41 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/17 18:45:08 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,42 @@
 
 Ice::Ice() : AMateria("ice")
 {
-    std::cout << "[ICE] - ";
-    std::cout << "Ice constructor called" << std::endl;
-    this->_type = "Ice";
+    std::cout << "[Ice] -" ;
+    std::cout << " constructor called" << std::endl;
+}
+
+Ice::Ice(Ice const &src) : AMateria(src)
+{
+    std::cout << "[Ice] -" ;
+    std::cout << " copy constructor called" << std::endl;
+    *this = src;
+}
+
+Ice::~Ice()
+{
+    std::cout << "[Ice] -" ;
+    std::cout << " destructor called" << std::endl;
+}
+
+Ice &Ice::operator=(Ice const &rhs)
+{
+    std::cout << "[Ice] -" ;
+    std::cout << " operator= called" << std::endl;
+    this->_type = rhs._type;
+    return (*this);
+}
+
+AMateria *Ice::clone() const
+{
+    std::cout << "[Ice] -" ;
+    std::cout << " clone called" << std::endl;
+    return (new Ice(*this));
+}
+
+void Ice::use(ICharacter &target)
+{
+    std::cout << "[Ice] -" ;
+    std::cout << " use called" << std::endl;
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+    (void)target;
 }

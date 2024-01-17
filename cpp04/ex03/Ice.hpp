@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:31:40 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/16 19:32:12 by lboulang         ###   ########.fr       */
+/*   Created: 2024/01/17 16:46:33 by lboulang          #+#    #+#             */
+/*   Updated: 2024/01/17 17:54:21 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,23 @@
 # define ICE_HPP
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
     public :
+    //madatory subject functions
+	//working
+    //not working
+    //others
+    //working
+    //not working
         Ice();
-        virtual ~Ice();
-        Ice(Ice const &src);
-        Ice &operator=(Ice const &src);
+        Ice(Ice const & src);
+        ~Ice();
+        Ice & operator=(Ice const & rhs);
+        AMateria *clone() const;
+        void use(ICharacter &target);
 };
 
 #endif
