@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:17:31 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/17 18:26:55 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/17 23:12:24 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@
 
 class MateriaSource : public IMateriaSource
 {
-    public:
-        MateriaSource();
-        ~MateriaSource();
-        MateriaSource(MateriaSource const &src);
-        MateriaSource &operator=(MateriaSource const &src);
-        
-        void learnMateria(AMateria *src);
-        AMateria *createMateria(std::string const &type);
-    private:
-        AMateria *_materia[4];
+	public:
+		MateriaSource();
+		~MateriaSource();
+		MateriaSource(MateriaSource const &src);
+		MateriaSource &operator=(MateriaSource const &src);
+		
+		void learnMateria(AMateria *src);
+		AMateria *createMateria(std::string const &type);
+		AMateria *getMateria(int i) const;
+	private:
+		AMateria *_materia[4];
 };
 
 #endif

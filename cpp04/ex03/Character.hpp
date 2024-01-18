@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:30:06 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/17 18:10:37 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/17 23:47:17 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class Character : public ICharacter
         void unequip(int idx);
         void use(int idx, ICharacter& target);//utilisera la Materia de l’emplacement[idx],et passera la cible en paramètre à la fonction AMateria::use.
     private :
-        AMateria *_inventory[4];    
+        AMateria *_inventory[4];
+        AMateria *_poubelle; 
         std::string _name;
 };
 

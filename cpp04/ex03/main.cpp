@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:42:16 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/17 19:08:32 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/17 23:40:12 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Complétez la définition de la classe AMateria suivante et implémentez les fonctions
 membres nécessaires.
-    // class AMateria
-    // {
-    //     protected:
-    //         ...
-    //     public:
-    //         AMateria(std::string const & type);
-    //         ...
-    //         std::string const & getType() const; //Returns the materia type
-    //         virtual AMateria* clone() const = 0;
-    //         virtual void use(ICharacter& target);
-    // };
+	// class AMateria
+	// {
+	//     protected:
+	//         ...
+	//     public:
+	//         AMateria(std::string const & type);
+	//         ...
+	//         std::string const & getType() const; //Returns the materia type
+	//         virtual AMateria* clone() const = 0;
+	//         virtual void use(ICharacter& target);
+	// };
 
 
 Implémentez les Materias Ice (glace) et Cure (soin) sous forme de classes concrètes.
@@ -48,15 +48,15 @@ grand intérêt.
 
 Créez la classe concrète Character qui implémentera l’interface suivante :
 
-    // class ICharacter
-    // {
-    //       public:
-    //       virtual ~ICharacter() {}
-    //       virtual std::string const & getName() const = 0;
-    //       virtual void equip(AMateria* m) = 0;
-    //       virtual void unequip(int idx) = 0;
-    //       virtual void use(int idx, ICharacter& target) = 0;
-    // };
+	// class ICharacter
+	// {
+	//       public:
+	//       virtual ~ICharacter() {}
+	//       virtual std::string const & getName() const = 0;
+	//       virtual void equip(AMateria* m) = 0;
+	//       virtual void unequip(int idx) = 0;
+	//       virtual void use(int idx, ICharacter& target) = 0;
+	// };
 
 Le Character a un inventaire de 4 items,
 	soit 4 Materias maximum. À la construction,
@@ -91,13 +91,13 @@ Materias doivent aussi être supprimées à la destruction d’un Character.
 
 Créez la classe concrète MateriaSource qui implémentera l’interface suivante :
 
-        // class IMateriaSource
-        // {
-            // public:
-            // virtual ~IMateriaSource() {}
-            // virtual void learnMateria(AMateria*) = 0;
-            // virtual AMateria* createMateria(std::string const & type) = 0;
-        // };
+		// class IMateriaSource
+		// {
+			// public:
+			// virtual ~IMateriaSource() {}
+			// virtual void learnMateria(AMateria*) = 0;
+			// virtual AMateria* createMateria(std::string const & type) = 0;
+		// };
 
 • learnMateria(AMateria*)
 Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
@@ -119,7 +119,7 @@ partir de son type sous forme de chaîne de caractères.
 
 
 Character :
-    Implemente ICharacter, 
+	Implemente ICharacter, 
 
 
 
@@ -135,20 +135,40 @@ Character :
 #include "IMateriaSource.hpp"
 int	main(void)
 {
-    // AMateria *ice = new Ice();
-    // AMateria *cure = new Cure();
-    // std::cout << "ice type : " << ice->getType() << std::endl;
-    // std::cout << "cure type : " << cure->getType() << std::endl;
+	IMateriaSource *src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter *me = new Character("me");
+	AMateria *tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter *bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
+	return (0);
+}
 
-    // AMateria *ice2 = ice->clone();
-    // AMateria *cure2 = cure->clone();
-    // std::cout << "ice2 type : " << ice2->getType() << std::endl;
-    // std::cout << "cure2 type : " << cure2->getType() << std::endl;
 
-    // delete ice2;
-    // delete ice;
-    // delete cure;
-    // delete cure2;
+/*
+// AMateria *ice = new Ice();
+	// AMateria *cure = new Cure();
+	// std::cout << "ice type : " << ice->getType() << std::endl;
+	// std::cout << "cure type : " << cure->getType() << std::endl;
+
+	// AMateria *ice2 = ice->clone();
+	// AMateria *cure2 = cure->clone();
+	// std::cout << "ice2 type : " << ice2->getType() << std::endl;
+	// std::cout << "cure2 type : " << cure2->getType() << std::endl;
+
+	// delete ice2;
+	// delete ice;
+	// delete cure;
+	// delete cure2;
 
 	// IMateriaSource	*src;
 	// ICharacter		*me;
@@ -188,24 +208,25 @@ int	main(void)
 	// return (0);
 	{
 		IMateriaSource* src = new MateriaSource();
-        // src->learnMateria(new Ice());
-        src->learnMateria(new Cure());
-        ICharacter* me = new Character("me");
-        AMateria* tmp;
-        std::cout << "TEST1";
-        tmp = src->createMateria("ice");
-        me->equip(tmp);
-        std::cout << "TEST2";
-        tmp = src->createMateria("cure");
-        me->equip(tmp);
-        ICharacter* bob = new Character("bob");
-        std::cout << "TEST3";
-        me->use(0, *bob);
-        std::cout << "TEST4";
-        me->use(1, *bob);
-        delete bob;
-        delete me;
-        delete src;
-        return 0;
+		// src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+		ICharacter* me = new Character("me");
+		AMateria* tmp;
+		std::cout << "TEST1";
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		std::cout << "TEST2";
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		ICharacter* bob = new Character("bob");
+		std::cout << "TEST3";
+		me->use(0, *bob);
+		std::cout << "TEST4";
+		me->use(1, *bob);
+		delete bob;
+		delete me;
+		delete src;
+		return 0;
 	}
-}
+
+*/
