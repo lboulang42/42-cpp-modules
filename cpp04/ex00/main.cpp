@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:01:01 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/16 19:03:15 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:59:49 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	main(void)
 		i->makeSound(); //will output the cat sound!
 		j->makeSound();
 		meta->makeSound();
+        delete meta;
+        delete j;
+        delete i;
 	}
 
     /*Animal/Dog/Cat Test*/
@@ -66,6 +69,9 @@ int	main(void)
         std::cout << "====================" << std::endl; 
         std::cout << std::endl;
         std::cout << std::endl;
+        delete ani;
+        delete dog;
+        delete cat;
 	}
     
     
@@ -96,6 +102,8 @@ int	main(void)
         std::cout << "makeSound on Wronganimal :" << std::endl;
 		wronganimal->makeSound();
         std::cout << "====================" << std::endl;  
+        delete wronganimal;
+        delete wrongcat;
     }
 
 }

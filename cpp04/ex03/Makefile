@@ -6,7 +6,7 @@
 #    By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 17:59:57 by lboulang          #+#    #+#              #
-#    Updated: 2024/01/17 18:22:14 by lboulang         ###   ########.fr        #
+#    Updated: 2024/01/18 16:01:51 by lboulang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ SRC_FILES	=	main.cpp\
 				Amateria.cpp\
 				Ice.cpp\
 				Character.cpp\
-				ICharacter.cpp\
 				Cure.cpp\
 				MateriaSource.cpp\
+				Announce.cpp
 
 				
 

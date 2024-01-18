@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:16:20 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/16 18:36:40 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:55:26 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void Brain::showIdeas(void)
 
 void Brain::setIdeas(int i, std::string idea)
 {
-    std::cout << "[BRAIN] - ";
-    std::cout << "Brain setIdeas called" << std::endl;
+    // std::cout << "[BRAIN] - ";
+    // std::cout << "Brain setIdeas called" << std::endl;
     this->_ideas[i] = idea;
 }

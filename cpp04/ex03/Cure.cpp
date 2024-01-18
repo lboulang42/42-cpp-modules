@@ -14,42 +14,35 @@
 
 Cure::Cure() : AMateria("cure")
 {
-    // std::cout << "[Cure] -" ;
-    // std::cout << " constructor called" << std::endl;
-
+	announce(__FUNCTION__, __CLASS_NAME__);
 }
 
 Cure::Cure(Cure const &src) : AMateria(src)
 {
-    // std::cout << "[Cure] -" ;
-    // std::cout << " copy constructor called" << std::endl;
-    *this = src;
+	announce(__FUNCTION__, __CLASS_NAME__);
+	*this = src;
 }
 
 Cure::~Cure()
 {
-    // std::cout << "[Cure] -" ;
-    // std::cout << " destructor called" << std::endl;
+	announce(__FUNCTION__, __CLASS_NAME__);
 }
 
 Cure &Cure::operator=(Cure const &rhs)
 {
-    // std::cout << "[Cure] -" ;
-    // std::cout << " operator= called" << std::endl;
-    this->_type = rhs._type;
-    return (*this);
+	announce(__FUNCTION__, __CLASS_NAME__);
+	this->_type = rhs._type;
+	return (*this);
 }
 
 AMateria *Cure::clone() const
 {
-    // std::cout << "[Cure] -" ;
-    // std::cout << " clone called" << std::endl;
-    return (new Cure(*this));
+	announce(__FUNCTION__, __CLASS_NAME__);
+	return (new Cure(*this));
 }
 
 void Cure::use(ICharacter &target)
 {
-    // std::cout << "[Cure] -" ;
-    // std::cout << " use called" << std::endl;
-    std::cout << "* shoots an Cure bolt at " << target.getName() << " *" << std::endl;
+	announce(__FUNCTION__, __CLASS_NAME__);
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

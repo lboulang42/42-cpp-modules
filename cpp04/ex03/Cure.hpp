@@ -13,24 +13,29 @@
 #ifndef Cure_HPP
 # define Cure_HPP
 
+
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
+#include "Announce.hpp"
+
+#ifdef __CLASS_NAME__
+# undef __CLASS_NAME__
+# define __CLASS_NAME__ "Cure"
+#endif
+
+#ifndef __CLASS_NAME__
+# define __CLASS_NAME__ "Cure"
+#endif
 
 class Cure : public AMateria
 {
-    public :
-    //madatory subject functions
-	//working
-    //not working
-    //others
-    //working
-    //not working
-        Cure();
-        Cure(Cure const & src);
-        ~Cure();
-        Cure & operator=(Cure const & rhs);
-        AMateria *clone() const;
-        void use(ICharacter &target);
+	public :
+		Cure();
+		Cure(Cure const & src);
+		~Cure();
+		Cure & operator=(Cure const & rhs);
+		AMateria *clone() const;
+		void use(ICharacter &target);
 };
 
 #endif

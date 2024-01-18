@@ -6,11 +6,10 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:16:53 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/17 22:38:51 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:06:55 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*DONE*/
 #ifndef IMATERIASOURCE_HPP
 # define IMATERIASOURCE_HPP
 
