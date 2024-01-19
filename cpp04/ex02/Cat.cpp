@@ -14,46 +14,46 @@
 
 Cat::Cat()
 {
-    std::cout << "[CAT] - ";
-    std::cout << "Cat constructor called" << std::endl;
-    this->_type = "Cat";
-    this->_brain = new Brain();
+	std::cout << "[CAT] - ";
+	std::cout << "Cat constructor called" << std::endl;
+	this->_type = "Cat";
+	this->_brain = new Brain();
 }
 
 Cat::Cat(Cat const &src)
 {
-    std::cout << "[CAT] - ";
-    std::cout << "Cat copy constructor called" << std::endl;
-    this->_type = src._type;
-    this->_brain = new Brain(*src._brain);
+	std::cout << "[CAT] - ";
+	std::cout << "Cat copy constructor called" << std::endl;
+	this->_type = src._type;
+	this->_brain = new Brain(*src._brain);
 }
 
 Cat::~Cat()
 {
-    std::cout << "[CAT] - ";
-    std::cout << "Cat destructor called" << std::endl;
-    delete this->_brain;
+	std::cout << "[CAT] - ";
+	std::cout << "Cat destructor called" << std::endl;
+	delete this->_brain;
 }
 
 Cat &Cat::operator=(Cat const &src)
 {
-    std::cout << "[CAT] - ";
-    std::cout << "Cat operator= called" << std::endl;
-    this->_type = src._type;
-    this->_brain = new Brain(*src._brain); // Fix: Call the copy constructor of the Brain class
-    return (*this);
+	std::cout << "[CAT] - ";
+	std::cout << "Cat operator= called" << std::endl;
+	this->_type = src._type;
+	this->_brain = new Brain(*src._brain); // Fix: Call the copy constructor of the Brain class
+	return (*this);
 }
 
 void Cat::makeSound() const
 {
-    std::cout << "[CAT] - ";
-    std::cout << "makeSound called" << std::endl;
-    std::cout << "MIAOU MIAOU" << std::endl;
+	std::cout << "[CAT] - ";
+	std::cout << "makeSound called" << std::endl;
+	std::cout << "MIAOU MIAOU" << std::endl;
 }
 
 void Cat::setIdeas(int i, std::string idea)
 {
-    this->_brain->setIdeas(i, idea);
+	this->_brain->setIdeas(i, idea);
 }
 
 void Cat::showIdeas(void)

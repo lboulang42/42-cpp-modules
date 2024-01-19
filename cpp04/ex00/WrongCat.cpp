@@ -14,35 +14,35 @@
 
 WrongCat::WrongCat()
 {
-    std::cout << "[WRONG CAT] - ";
-    std::cout << "WrongCat constructor called" << std::endl;
-    this->_type = "WrongCat";
+	std::cout << "[WRONG CAT] - ";
+	std::cout << "WrongCat constructor called" << std::endl;
+	this->_type = "WrongCat";
 }
 
 WrongCat::WrongCat(WrongCat &src)
 {
-    std::cout << "[WRONG CAT] - ";
-    std::cout << "WrongCat copy constructor called" << std::endl;
-    *this = src;
+	std::cout << "[WRONG CAT] - ";
+	std::cout << "WrongCat copy constructor called" << std::endl;
+	*this = src;
 }
 
 WrongCat::~WrongCat()
 {
-    std::cout << "[WRONG CAT] - ";
-    std::cout << "WrongCat destructor called" << std::endl;
+	std::cout << "[WRONG CAT] - ";
+	std::cout << "WrongCat destructor called" << std::endl;
 }
 
 WrongCat &WrongCat::operator=(WrongCat const &src)
 {
-    std::cout << "[WRONG CAT] - ";
-    std::cout << "WrongCat operator= called" << std::endl;
-    this->_type = src._type;
-    return (*this);
+	std::cout << "[WRONG CAT] - ";
+	std::cout << "WrongCat operator= called" << std::endl;
+	this->_type = src._type;
+	return (*this);
 }
 
 void WrongCat::makeSound() const
 {
-    std::cout << "[WRONG CAT] - ";
-    std::cout << "makeSound called" << std::endl;
-    std::cout << "GRAOUUUUUUUU" << std::endl;
+	std::cout << "[WRONG CAT] - ";
+	std::cout << "makeSound called" << std::endl;
+	std::cout << "GRAOUUUUUUUU" << std::endl;
 }

@@ -18,12 +18,12 @@
 
 class Cat: public Animal
 {
-    public : 
-        Cat();
-        Cat(Cat &src);
-        ~Cat();
-        Cat &operator=(Cat const &src);
-        void makeSound(void) const;
+	public : 
+		Cat();
+		Cat(Cat &src);
+		~Cat();
+		Cat &operator=(Cat const &src);
+		void makeSound(void) const;
 };
 
 #endif

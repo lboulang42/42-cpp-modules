@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:06:16 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 16:05:15 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:36:32 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(void)
 	frag.highFivesGuys();
 	frag.takeDamage(1000);
 	frag.attack("user B");
-
-
-
+	frag.takeDamage(10);
+	frag.beRepaired(1000);
+	frag.takeDamage(10000);
+	frag.highFivesGuys();
 }

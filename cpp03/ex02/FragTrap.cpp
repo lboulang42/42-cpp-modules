@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:02:39 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 16:16:13 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:33:31 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 {
     std::cout << "[FRAGTRAP METHOD] - ";
     std::cout << "FragTrap copy constructor called" << std::endl;
-    *this = src;
+    this->_hitpoints = src._hitpoints;
+    this->_energyPoints = src._energyPoints;
+    this->_attackDamage = src._attackDamage;
+    this->_name = src._name;
+    
 }
 
 FragTrap::~FragTrap(void)

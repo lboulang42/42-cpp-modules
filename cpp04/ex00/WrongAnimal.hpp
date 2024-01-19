@@ -17,18 +17,18 @@
 
 class WrongAnimal
 {
-    public :
-     
-        WrongAnimal();
-        WrongAnimal(WrongAnimal &src);
-        ~WrongAnimal();
-        WrongAnimal &operator=(WrongAnimal const &src);
-    
-        std::string getType(void) const;
-        void makeSound(void) const;
+	public :
+	 
+		WrongAnimal();
+		WrongAnimal(WrongAnimal &src);
+		~WrongAnimal();
+		WrongAnimal &operator=(WrongAnimal const &src);
+	
+		std::string getType(void) const;
+		void makeSound(void) const;
 
-    protected :
-        std::string _type;
+	protected :
+		std::string _type;
 };
 
 #endif

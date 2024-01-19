@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 13:53:52 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/16 14:45:59 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:57:28 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ Animal::~Animal()
 Animal &Animal::operator=(Animal const &src)
 {
 	std::cout << "[ANIMAL] - ";
+	std::cout << "Animal operator= called" << std::endl;
 	this->_type = src._type;
 	return (*this);
 }

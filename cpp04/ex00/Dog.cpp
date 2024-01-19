@@ -14,35 +14,35 @@
 
 Dog::Dog()
 {
-    std::cout << "[DOG] - ";
-    std::cout << "Dog constructor called" << std::endl;
-    this->_type = "Dog";
+	std::cout << "[DOG] - ";
+	std::cout << "Dog constructor called" << std::endl;
+	this->_type = "Dog";
 }
 
 Dog::Dog(Dog &src)
 {
-    std::cout << "[DOG] - ";
-    std::cout << "Dog copy constructor called" << std::endl;
-    *this = src;
+	std::cout << "[DOG] - ";
+	std::cout << "Dog copy constructor called" << std::endl;
+	*this = src;
 }
 
 Dog::~Dog()
 {
-    std::cout << "[DOG] - ";
-    std::cout << "Dog destructor called" << std::endl;
+	std::cout << "[DOG] - ";
+	std::cout << "Dog destructor called" << std::endl;
 }
 
 Dog &Dog::operator=(Dog const &src)
 {
-    std::cout << "[DOG] - ";
-    std::cout << "Dog operator= called" << std::endl;
-    this->_type = src._type;
-    return (*this);
+	std::cout << "[DOG] - ";
+	std::cout << "Dog operator= called" << std::endl;
+	this->_type = src._type;
+	return (*this);
 }
 
 void Dog::makeSound() const
 {
-    std::cout << "[DOG] - ";
-    std::cout << "makeSound called" << std::endl;
-    std::cout << "BARK BARK BARK" << std::endl;
+	std::cout << "[DOG] - ";
+	std::cout << "makeSound called" << std::endl;
+	std::cout << "BARK BARK BARK" << std::endl;
 }

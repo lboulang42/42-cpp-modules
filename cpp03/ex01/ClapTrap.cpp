@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:36:22 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 16:15:39 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:29:31 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 {
     std::cout << "[CLAPTRAP METHOD] - ";
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+    this->_name = src._name;
+    this->_hitpoints = src._hitpoints;
+    this->_energyPoints = src._energyPoints;
+    this->_attackDamage = src._attackDamage;
 }
 
 /*Destructeur*/

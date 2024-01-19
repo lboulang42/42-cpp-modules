@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:52:42 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/13 16:11:46 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:33:40 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 {
 	std::cout << "[SCAVTRAP METHOD] - ";
 	std::cout << "ScavTrap copy constructor called" << std::endl;
-	*this = src;
+	this->_hitpoints = src._hitpoints;
+	this->_energyPoints = src._energyPoints;
+	this->_attackDamage = src._attackDamage;
+	this->_name = src._name;
 }
 
 void ScavTrap::attack(const std::string &target)
