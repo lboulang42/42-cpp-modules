@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:39:45 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/18 20:26:37 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:24:25 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class ICharacter;
 class AMateria
 {
 	public:
+		AMateria();
 		AMateria(std::string const &type);
 		AMateria &operator=(AMateria const &src);
 		virtual ~AMateria();

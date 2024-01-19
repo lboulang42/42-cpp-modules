@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:33:27 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/18 20:40:18 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:24:13 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ Character::Character(std::string const &name)
 {
 	announce(__FUNCTION__, __CLASS_NAME__);
 	this->_name = name;
+	this->_inventory[0] = NULL;
+	this->_inventory[1] = NULL;
+	this->_inventory[2] = NULL;
+	this->_inventory[3] = NULL;
+	this->_throwed = NULL;
+	this->_count_throwed = 0;
+}
+
+Character::Character()
+{
+	announce(__FUNCTION__, __CLASS_NAME__);
+	this->_name = "default name";
 	this->_inventory[0] = NULL;
 	this->_inventory[1] = NULL;
 	this->_inventory[2] = NULL;
@@ -111,6 +123,11 @@ std::string const &Character::getName() const
 void Character::unequip(int idx)
 {
 	announce(__FUNCTION__, __CLASS_NAME__);
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "Wrong index" << std::endl;
+		return ;
+	}
 	if (this->_inventory[idx] == NULL)
 	{
 		std::cout << "No Materia to unequip" << std::endl;
@@ -130,6 +147,11 @@ void Character::unequip(int idx)
 void Character::use(int idx, ICharacter &target)
 {
 	announce(__FUNCTION__, __CLASS_NAME__);
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "Wrong index" << std::endl;
+		return ;
+	}
 	if (this->_inventory[idx] != NULL)
 		this->_inventory[idx]->use(target);
 	else

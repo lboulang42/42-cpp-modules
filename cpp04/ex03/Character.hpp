@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:30:06 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/18 20:26:43 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:23:19 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 class Character : public ICharacter
 {
 	public :
+		Character();
 		Character(std::string const & name);
 		Character(Character const & src);
 		~Character();

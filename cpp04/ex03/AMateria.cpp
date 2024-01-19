@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Amateria.cpp                                       :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:51:01 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/18 20:29:07 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:24:46 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+
+/*Constructor*/
+AMateria::AMateria()
+{
+	announce(__FUNCTION__, __CLASS_NAME__);
+	this->_type = "?";
+}
 
 /*Constructor*/
 AMateria::AMateria(std::string const &type)

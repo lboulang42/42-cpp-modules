@@ -40,6 +40,7 @@ Cat &Cat::operator=(Cat const &src)
 	std::cout << "[CAT] - ";
 	std::cout << "Cat operator= called" << std::endl;
 	this->_type = src._type;
+	delete 	this->_brain;
 	this->_brain = new Brain(*src._brain); // Fix: Call the copy constructor of the Brain class
 	return (*this);
 }

@@ -40,6 +40,7 @@ Dog &Dog::operator=(Dog const &src)
     std::cout << "[DOG] - ";
     std::cout << "Dog operator= called" << std::endl;
     this->_type = src._type;
+    delete this->_brain;
     this->_brain = new Brain(*src._brain);
     return (*this);
 }

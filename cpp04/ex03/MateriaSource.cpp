@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:18:30 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/18 20:34:43 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:25:15 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ MateriaSource:: MateriaSource()
     this->_materia[2] = NULL;
     this->_materia[3] = NULL;
 }
+
 MateriaSource::~MateriaSource()
 {
     announce(__FUNCTION__, __CLASS_NAME__);
