@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:27 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/29 17:45:59 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:01:01 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ Bureaucrat::Bureaucrat(): _name("Default")
 /*constructor with name and grade*/
 /*Any attempt to instantiate a Bureaucrat using an invalid grade must throw an exception:
 either a Bureaucrat::GradeTooHighException or a Bureaucrat::GradeTooLowException.*/
-Bureaucrat::Bureaucrat(int grade, const std::string name): _name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
 {
-	std::cout << "Constructor with name and grade called" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
@@ -53,24 +52,6 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Destructor called" << std::endl;
 }
 
-/*==========OPERATORS==========*/
-
-Bureaucrat Bureaucrat::operator++(void)
-{
-	if (this->_grade == 1)
-		throw Bureaucrat::GradeTooHighException();
-	this->_grade--;
-	return (*this);
-}
-
-Bureaucrat Bureaucrat::operator--(void)
-{
-	if (this->_grade == 150)
-		throw Bureaucrat::GradeTooLowException();
-	this->_grade++;
-	return (*this);
-}
-
 /*==========GETTERS==========*/
 
 std::string Bureaucrat::getName() const
@@ -85,6 +66,20 @@ int Bureaucrat::getGrade() const
 	else if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	return (this->_grade);
+}
+
+/*==========MEMBER FUNCTIONS==========*/
+void Bureaucrat::incrementGrade()
+{
+	if (this->_grade == 1)
+		throw Bureaucrat::GradeTooHighException();
+	this->_grade--;
+}
+void Bureaucrat::decrementGrade()
+{
+	if (this->_grade == 150)
+		throw Bureaucrat::GradeTooLowException();
+	this->_grade++;
 }
 
 /*==========EXCEPTIONS==========*/
