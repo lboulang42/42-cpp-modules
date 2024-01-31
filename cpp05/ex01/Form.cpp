@@ -75,14 +75,6 @@ int Form::getGradeToExecute() const
 		throw Form::GradeTooLowException();
 	return (this->_grade_to_execute);
 }
-/*==========SETTER==========*/
-		
-//void Form::set(std::string &s)
-//{
-//	std::cout << "[Form] - ";
-//	std::cout << "setter called" << std::endl;
-//	this->_var_str = s;
-//}
 
 /*==========EXCEPTIONS==========*/
 
@@ -100,17 +92,14 @@ const char *Form::GradeTooLowException::what() const throw()
 /*==========OTHER OPERATORS==========*/
 std::ostream &operator<<(std::ostream &out, Form const &b)
 {
-	out << b.getName() << ", form grade to sign " << b.getGradeToSign() << ", form grade to execute " << b.getGradeToExecute() << "." << std::endl;
+	out << b.getName() << ", form grade to sign " << b.getGradeToSign() << ", form grade to execute " << b.getGradeToExecute();
 	return (out);
 }
 
 void Form::beSigned(Bureaucrat &b)
 {
-	b.signForm(*this);	
 	if (b.getGrade() <= this->_grade_to_sign)
-	{
 		this->_signed = true;
-	}
 	else
 		throw Form::GradeTooLowException();
 }

@@ -6,12 +6,12 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:34 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/29 19:43:57 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:27:11 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef BUREAUCRAT_H
+# define BUREAUCRAT_H
 
 # include <iostream>
 
@@ -27,17 +27,18 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat &src);
 		Bureaucrat &operator=(Bureaucrat const &src);
 		~Bureaucrat();
+		
 		/*constructor with name and grade*/
 		Bureaucrat(const std::string name, int grade);
-		
-		/*==========OPERATORS==========*/
-		Bureaucrat operator++(void);
-		Bureaucrat operator--(void);
 		
 		/*==========GETTERS==========*/
 		std::string getName() const;
 		int getGrade() const;
 		
+		/*==========MEMBER FUNCTIONS==========*/
+		void incrementGrade();
+		void decrementGrade();
+		void signForm(Form &form);
 		/*==========EXCEPTIONS==========*/
 		class GradeTooLowException : public std::exception
 		{
@@ -49,9 +50,6 @@ class Bureaucrat
 			public:
 				virtual const char *what() const throw();
 		};
-		/*==========OTHERS==========*/
-		void signForm(Form &f);
-		
 	
 	private:
 		const std::string _name;
