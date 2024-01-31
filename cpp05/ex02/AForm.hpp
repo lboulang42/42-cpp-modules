@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 19:49:12 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/29 19:52:56 by lboulang         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 /*Generated using lboulang42's cppmain.sh*/
 
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#ifndef AForm_HPP
+# define AForm_HPP
 
 # include <iostream>
 # include "Bureaucrat.hpp"
@@ -26,7 +14,7 @@ class AForm
 		AForm();
 		AForm(AForm &src);
 		AForm &operator=(AForm const &src);
-		virtual ~AForm()=0;
+		~AForm();
 
 		AForm(std::string name, int grade_to_sign, int grade_to_execute);
 		
