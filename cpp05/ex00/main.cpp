@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:01:01 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/31 18:00:15 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:29:38 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main (void)
 	
 	/* ********************************************************************** */
 	std::cout << "===================================================" << std::endl;
-	std::cout << "CONSTRUCTOR EXCEPTION TESTS" << std::endl;
+	std::cout << "BUREAUCRAT CONSTRUCTOR EXCEPTION TESTS" << std::endl;
 	std::cout << "===================================================" << std::endl;	
 
 	std::cout << "===================================================" << std::endl;
@@ -81,7 +81,7 @@ int main (void)
 	/* ********************************************************************** */
 	
 	std::cout << "===================================================" << std::endl;
-	std::cout << "INCREMENT/DECREMENT EXCEPTION TESTS" << std::endl;
+	std::cout << "BUREAUCRAT INCREMENT/DECREMENT EXCEPTION TESTS" << std::endl;
 	std::cout << "===================================================" << std::endl;	
 
 	std::cout << "===================================================" << std::endl;
@@ -147,7 +147,7 @@ int main (void)
 	
 	/* ********************************************************************** */
 	std::cout << "===================================================" << std::endl;
-	std::cout << "GETTERS TESTS" << std::endl;
+	std::cout << "BUREAUCRAT GETTERS TESTS" << std::endl;
 	std::cout << "===================================================" << std::endl;	
 	try 
 	{
