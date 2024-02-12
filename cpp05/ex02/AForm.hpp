@@ -14,7 +14,7 @@ class AForm
 		AForm();
 		AForm(AForm &src);
 		AForm &operator=(AForm const &src);
-		~AForm();
+		virtual ~AForm() =0;
 
 		AForm(std::string name, int grade_to_sign, int grade_to_execute);
 		
