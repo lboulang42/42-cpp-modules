@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:34 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/31 17:28:43 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/13 16:58:42 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Bureaucrat
 		Bureaucrat &operator=(Bureaucrat const &src);
 		~Bureaucrat();
 		
-		/*constructor with name and grade*/
+		/*==========OTHER CONSTRUCTOR==========*/
 		Bureaucrat(const std::string name, int grade);
 		
 		/*==========GETTERS==========*/
