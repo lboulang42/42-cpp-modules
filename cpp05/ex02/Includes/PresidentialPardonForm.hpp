@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 18:59:00 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/31 19:03:57 by lboulang         ###   ########.fr       */
+/*   Created: 2024/02/13 18:45:43 by lboulang          #+#    #+#             */
+/*   Updated: 2024/02/13 21:23:55 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,18 @@
 # include <iostream>
 # include "AForm.hpp"
 
-class AForm;
+class Aform;
 
 class PresidentialPardonForm : public AForm
 {
     public:
-        /*==========CANONICAL==========*/
         PresidentialPardonForm();
-        PresidentialPardonForm(PresidentialPardonForm &src);
-        ~PresidentialPardonForm();
+        PresidentialPardonForm(PresidentialPardonForm const &src);
         PresidentialPardonForm &operator=(PresidentialPardonForm const &src);
-        /*constructor with name and grade*/
-        PresidentialPardonForm(std::string target);
+        ~PresidentialPardonForm();
         
-        /*==========GETTERS==========*/
-        // std::string getTarget() const;
-        
-        /*==========MEMBER FUNCTIONS==========*/
-        void execute(Bureaucrat const &executor) const;
-    
+        PresidentialPardonForm(std::string const &target);
+        virtual void execute(Bureaucrat const &executor) const;
     private:
         std::string _target;
 };

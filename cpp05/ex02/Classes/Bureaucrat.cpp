@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:27 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/31 18:54:53 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:07:01 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ void Bureaucrat::decrementGrade()
 	this->_grade++;
 }
 
-void Bureaucrat::signForm(AForm &AForm)
+void Bureaucrat::signForm(AForm &form)
 {
 	try 
 	{
-		AForm.beSigned(*this);
-		std::cout << "\e[0;32m" << *this << " signed " << AForm << "\033[0m" << std::endl;
+		form.beSigned(*this);
+		std::cout << "\e[0;32m" << *this << " signed " << form << "\033[0m" << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "\e[0;31m" << *this << " couldn't sign " << AForm << " because his grade is to low" << "\033[0m" << std::endl;
+		std::cout << "\e[0;31m" << *this << " couldn't sign " << form << " because his grade is to low" << "\033[0m" << std::endl;
 	}
 }
 
@@ -113,4 +113,18 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat const &b)
 	
 	out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
 	return (out);
+}
+
+
+void	Bureaucrat::executeForm ( AForm const &AForm )
+{
+	if (AForm.getSigned() == false)
+		std::cout << _name << " couldn't execute " << AForm.getName() << " because the form is not signed\n";
+	else if (_grade > AForm.getGradeToExecute())
+		std::cout << _name << " couldn't execute " << AForm.getName() << " because his grade is too low\n";
+	else
+	{
+		std::cout << _name << " executed " << AForm.getName() << std::endl;
+		AForm.execute(*this);
+	}
 }

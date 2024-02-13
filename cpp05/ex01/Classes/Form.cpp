@@ -23,10 +23,14 @@ Form::Form(std::string name, int grade_to_sign, int grade_to_execute) : _name(na
 }
 
 /*copy constructor*/
-Form::Form(Form &src) : _name(src.getName()), _signed(false), _grade_to_sign(src.getGradeToSign()), _grade_to_execute(src.getGradeToExecute())
+Form::Form(Form &src) : _name(src.getName()), _signed(src.getSigned()), _grade_to_sign(src.getGradeToSign()), _grade_to_execute(src.getGradeToExecute())
 {
 	std::cout << "[Form] - ";
 	std::cout << "Copy constructor called" << std::endl;
+	if (_grade_to_sign < 1 || _grade_to_execute < 1)
+		throw Form::GradeTooHighException();
+	else if (_grade_to_sign > 150 || _grade_to_execute > 150)
+		throw Form::GradeTooLowException();
 }
 
 /*operator = */
@@ -35,9 +39,8 @@ Form &Form::operator=(Form const &src)
 	std::cout << "[Form] - ";
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &src)
-	{
 		*this = src;
-	}
+	this->_signed = src.getSigned();
 	return (*this);
 }
 
@@ -96,7 +99,7 @@ std::ostream &operator<<(std::ostream &out, Form const &b)
 	return (out);
 }
 
-void Form::beSigned(Bureaucrat &b)
+void Form::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() <= this->_grade_to_sign)
 		this->_signed = true;

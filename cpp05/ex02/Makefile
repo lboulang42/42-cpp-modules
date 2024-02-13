@@ -6,7 +6,7 @@
 #    By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 17:59:57 by lboulang          #+#    #+#              #
-#    Updated: 2024/01/31 18:55:32 by lboulang         ###   ########.fr        #
+#    Updated: 2024/02/13 21:27:08 by lboulang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,12 @@
 #                                  SOURCES                                     #
 ################################################################################
 
-SRC_FILES	=	main.cpp\
-			Bureaucrat.cpp\
-			AForm.cpp\
+SRC_FILES	=	$(addprefix Classes/, Bureaucrat.cpp) \
+				$(addprefix Classes/, AForm.cpp) \
+				$(addprefix Classes/, ShrubberyCreationForm.cpp) \
+				$(addprefix Classes/, RobotomyRequestForm.cpp) \
+				$(addprefix Classes/, PresidentialPardonForm.cpp) \
+				main.cpp
 
 ################################################################################
 #                                  OBJETS                                      #
@@ -30,7 +33,7 @@ OBJS		= $(SRC_FILES:%.cpp=$(OBJS_DIR)/%.o)
 ################################################################################
 
 CC			= c++
-CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes
+CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror -I Includes -MMD -MP
 
 ################################################################################
 #                                  MAKEFILE                                    #
@@ -44,7 +47,10 @@ $(NAME) : $(OBJS_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	
 $(OBJS_DIR) :
-	@mkdir $(OBJS_DIR)
+	mkdir $(OBJS_DIR)
+	mkdir $(OBJS_DIR)/Classes
+
+-include $(OBJS:%.o=%.d)
 
 $(OBJS) : $(OBJS_DIR)/%.o : %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@

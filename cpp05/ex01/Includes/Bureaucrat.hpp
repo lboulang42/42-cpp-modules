@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:34 by lboulang          #+#    #+#             */
-/*   Updated: 2024/01/31 18:54:43 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:16:54 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <iostream>
 
-# include "AForm.hpp"
+# include "Form.hpp"
 
-class AForm;
+class Form;
 
 class Bureaucrat
 {
@@ -28,7 +28,6 @@ class Bureaucrat
 		Bureaucrat &operator=(Bureaucrat const &src);
 		~Bureaucrat();
 		
-		/*constructor with name and grade*/
 		Bureaucrat(const std::string name, int grade);
 		
 		/*==========GETTERS==========*/
@@ -38,7 +37,7 @@ class Bureaucrat
 		/*==========MEMBER FUNCTIONS==========*/
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(AForm &AForm);
+		void signForm(Form &form);
 		/*==========EXCEPTIONS==========*/
 		class GradeTooLowException : public std::exception
 		{

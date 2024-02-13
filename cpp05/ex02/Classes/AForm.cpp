@@ -23,10 +23,14 @@ AForm::AForm(std::string name, int grade_to_sign, int grade_to_execute) : _name(
 }
 
 /*copy constructor*/
-AForm::AForm(AForm &src) : _name(src.getName()), _signed(false), _grade_to_sign(src.getGradeToSign()), _grade_to_execute(src.getGradeToExecute())
+AForm::AForm(AForm &src) : _name(src.getName()), _signed(src.getSigned()), _grade_to_sign(src.getGradeToSign()), _grade_to_execute(src.getGradeToExecute())
 {
 	std::cout << "[AForm] - ";
 	std::cout << "Copy constructor called" << std::endl;
+	if (_grade_to_sign < 1 || _grade_to_execute < 1)
+		throw AForm::GradeTooHighException();
+	else if (_grade_to_sign > 150 || _grade_to_execute > 150)
+		throw AForm::GradeTooLowException();
 }
 
 /*operator = */
@@ -35,9 +39,8 @@ AForm &AForm::operator=(AForm const &src)
 	std::cout << "[AForm] - ";
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &src)
-	{
 		*this = src;
-	}
+	this->_signed = src.getSigned();
 	return (*this);
 }
 
@@ -89,14 +92,21 @@ const char *AForm::GradeTooLowException::what() const throw()
 	return ("\e[0;35m[AForm::GradeTooLowException] - GRADE TOO LOW\033[0m");
 }
 
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return ("\e[0;35m[AForm::FormNotSignedException] - FORM NEED TO BE SIGNED TO BE EXECUTED\033[0m");
+}
+
+
+
 /*==========OTHER OPERATORS==========*/
 std::ostream &operator<<(std::ostream &out, AForm const &b)
 {
-	out << b.getName() << ", AForm grade to sign " << b.getGradeToSign() << ", AForm grade to execute " << b.getGradeToExecute();
+	out << b.getName() << ", Aform grade to sign " << b.getGradeToSign() << ", Aform grade to execute " << b.getGradeToExecute();
 	return (out);
 }
 
-void AForm::beSigned(Bureaucrat &b)
+void AForm::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() <= this->_grade_to_sign)
 		this->_signed = true;
