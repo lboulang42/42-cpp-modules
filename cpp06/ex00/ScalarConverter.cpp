@@ -5,12 +5,10 @@
 /*==========CANONICAL==========*/
 
 /*default constructor*/
-ScalarConverter::ScalarConverter()
+ScalarConverter::ScalarConverter(void)
 {
 	std::cout << "[ScalarConverter] - ";
 	std::cout << "Default constructor called" << std::endl;
-	//this->_var_str = "default";
-	//this->_var_int = 0;
 }
 
 /*copy constructor*/
@@ -18,8 +16,8 @@ ScalarConverter::ScalarConverter(ScalarConverter &src)
 {
 	std::cout << "[ScalarConverter] - ";
 	std::cout << "Copy constructor called" << std::endl;
-	(void)src;
-	//this->_var_str = src.get();
+	this->_originalStr = src._originalStr;
+	this->_type = src._type;
 }
 
 /*operator = */
@@ -27,10 +25,10 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &src)
 {
 	std::cout << "[ScalarConverter] - ";
 	std::cout << "Assignation operator called" << std::endl;
-	(void)src;
 	if (this != &src)
 	{
-		//this->_var_str = src.get();
+		this->_originalStr = src._originalStr;
+		this->_type = src._type;
 	}
 	return (*this);
 }
@@ -41,41 +39,23 @@ ScalarConverter::~ScalarConverter()
 	std::cout << "Destructor called" << std::endl;
 }
 
-/*==========OPERATORS==========*/
+/*==========OTHER CONSTRUCTORS==========*/
 
-//ScalarConverter ScalarConverter::operator++(void)
-//{
-//	std::cout << "[ScalarConverter] - ";
-//	std::cout << "Operator ++ called" << std::endl;
-//	this->_var_int++;
-//	return (*this);
-//}
-
-//ScalarConverter ScalarConverter::operator--(void)
-//{
-//	std::cout << "[ScalarConverter] - ";
-//	std::cout << "Operator -- called" << std::endl;
-//	this->_var_int--;
-//	return (*this);
-//}
-
-/*==========GETTERS==========*/
-
-//std::string ScalarConverter::get() const
-//{
-//	std::cout << "[ScalarConverter] - ";
-//	std::cout << "Function get called" << std::endl;
-//	return (this->_var_str);
-//}
-
-/*==========SETTER==========*/
-		
-//void ScalarConverter::set(std::string &s)
-//{
-//	std::cout << "[ScalarConverter] - ";
-//	std::cout << "setter called" << std::endl;
-//	this->_var_str = s;
-//}
+ScalarConverter::ScalarConverter(std::string const &str)
+{
+	std::cout << "[ScalarConverter] - ";
+	std::cout << "Constructor called" << std::endl;
+	if (str.empty())
+	{
+		std::cout << "Error: empty string" << std::endl;
+		return ;
+	}
+	this->_originalStr = str;
+	if (isSpecialCase(this->_originalStr))
+		return ; 
+	this->_type = getType(this->_originalStr);
+	convert(this->_originalStr);
+}
 
 /*==========EXCEPTIONS==========*/
 
@@ -95,21 +75,7 @@ ScalarConverter::~ScalarConverter()
 //}
 
 
-ScalarConverter::ScalarConverter(std::string const &str)
-{
-	std::cout << "[ScalarConverter] - ";
-	std::cout << "Constructor called" << std::endl;
-	if (str.empty())
-	{
-		std::cout << "Error: empty string" << std::endl;
-		return ;
-	}
-	this->_originalStr = str;
-	if (isSpecialCase(this->_originalStr))
-		return ; 
-	this->_type = getType(this->_originalStr);
-	convert(this->_originalStr);
-}
+
 
 void ScalarConverter::convert(std::string const &str)
 {
@@ -165,28 +131,43 @@ bool isFloat(std::string const &str)
 	
 }
 
-
-bool isFloat ( std::string const &str )
+bool isChar ( std::string const &str )
 {
 
 }
+
+bool isDouble ( std::string const &str )
+{
+
+}
+
+bool isInt ( std::string const &str )
+{
+
+}
+
+
 
 std::string getType(std::string const &str)
 {
 	if (isFloat(str))
 		return ("float");
-	if (isChar())
+	if (isChar(str))
 		return ("char");
-	if (isDouble())
+	if (isDouble(str))
 		return ("double");
-	if (isInt())
+	if (isInt(str))
 		return ("int");
 	return (NULL);
 }
 
+/*
+- `nanf`: This stands for "Not a Number" float. It is a special value that represents a result that is undefined or unrepresentable. For example, the square root of a negative number.
+- `-inff` and `+inff`: These stand for negative infinity and positive infinity float respectively. They are used to represent values that are beyond the limit of floating point numbers in the negative and positive direction. For example, dividing a positive float by zero results in `+inff`, and dividing a negative float by zero results in `-inff`.
+*/
+
 bool isSpecialCase(std::string const &str)
 {
-	//float pseudo strs
 	if (str == "inf" || str == "inff")
 	{
 		std::cout << "char : impossible\n";
@@ -221,9 +202,4 @@ bool isSpecialCase(std::string const &str)
 	}
 	return (false);
 }
-
-/*
-- `nanf`: This stands for "Not a Number" float. It is a special value that represents a result that is undefined or unrepresentable. For example, the square root of a negative number.
-- `-inff` and `+inff`: These stand for negative infinity and positive infinity float respectively. They are used to represent values that are beyond the limit of floating point numbers in the negative and positive direction. For example, dividing a positive float by zero results in `+inff`, and dividing a negative float by zero results in `-inff`.
-*/
 
