@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 19:03:51 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/13 21:25:59 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:50:56 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+
 int main ( void )
 {
 	try
@@ -81,7 +82,7 @@ int main ( void )
 		b5.signForm(*form8);
 		b5.executeForm(*form8);
 		std::cout << "\n";
-		Bureaucrat b6("b6", 26);
+		Bureaucrat b6("b6", 150);
 		AForm *form9 = new PresidentialPardonForm("bad_b6form");
 		b6.signForm(*form9);
 		b6.executeForm(*form9);

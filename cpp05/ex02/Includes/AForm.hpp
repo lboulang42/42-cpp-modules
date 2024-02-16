@@ -1,13 +1,19 @@
-/*Generated using lboulang42's cppmain.sh*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/16 11:51:11 by lboulang          #+#    #+#             */
+/*   Updated: 2024/02/16 11:51:13 by lboulang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
 # include <iostream>
-// # include <string>
-// # include <exception>
-// # include <stdexcept>
-// # include <exception>
 # include <fstream>
 # include "Bureaucrat.hpp"
 
@@ -17,11 +23,16 @@ class AForm
 {
   	public:
 		/*==========CANONICAL==========*/
+		/*default constructor*/
 		AForm();
+		/*copy constructor*/
 		AForm(AForm &src);
+		/*operator = */
 		AForm &operator=(AForm const &src);
+		/*destructor*/
 		virtual ~AForm();
 
+		/*==========OTHER CONSTRUCTOR==========*/
 		AForm(std::string name, int grade_to_sign, int grade_to_execute);
 		
 		/*==========GETTERS==========*/
@@ -30,6 +41,10 @@ class AForm
 		int getGradeToSign() const;
 		int getGradeToExecute() const;
 		
+		/*==========MEMBER FUNCTIONS==========*/
+		void beSigned(const Bureaucrat &b);
+		virtual void execute (Bureaucrat const & executor) const = 0;
+
 		/*==========EXCEPTIONS==========*/
 		class GradeTooHighException : public std::exception
 		{
@@ -46,10 +61,6 @@ class AForm
 			public:
 				virtual const char *what() const throw();
 		};
-
-		/*==========OTHERS==========*/
-		void beSigned(const Bureaucrat &b);
-		virtual void execute (Bureaucrat const & executor) const = 0;
 
 	private:
 		std::string const _name;

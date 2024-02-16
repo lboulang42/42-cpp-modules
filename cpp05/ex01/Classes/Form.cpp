@@ -12,16 +12,6 @@ Form::Form() : _name("Default"), _signed(false), _grade_to_sign(1), _grade_to_ex
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Form::Form(std::string name, int grade_to_sign, int grade_to_execute) : _name(name), _signed(false), _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute)
-{
-	std::cout << "[Form] - ";
-	std::cout << "Constructor with name and grade called" << std::endl;
-	if (grade_to_sign < 1 || grade_to_execute < 1)
-		throw Form::GradeTooHighException();
-	else if (grade_to_sign > 150 || grade_to_execute > 150)
-		throw Form::GradeTooLowException();
-}
-
 /*copy constructor*/
 Form::Form(Form &src) : _name(src.getName()), _signed(src.getSigned()), _grade_to_sign(src.getGradeToSign()), _grade_to_execute(src.getGradeToExecute())
 {
@@ -44,10 +34,22 @@ Form &Form::operator=(Form const &src)
 	return (*this);
 }
 
+/*destructor*/
 Form::~Form()
 {
 	std::cout << "[Form] - ";
 	std::cout << "Destructor called" << std::endl;
+}
+
+/*==========OTHER CONSTRUCTOR==========*/
+Form::Form(std::string name, int grade_to_sign, int grade_to_execute) : _name(name), _signed(false), _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute)
+{
+	std::cout << "[Form] - ";
+	std::cout << "Constructor with name and grade called" << std::endl;
+	if (grade_to_sign < 1 || grade_to_execute < 1)
+		throw Form::GradeTooHighException();
+	else if (grade_to_sign > 150 || grade_to_execute > 150)
+		throw Form::GradeTooLowException();
 }
 
 /*==========GETTERS==========*/
@@ -72,6 +74,7 @@ int Form::getGradeToSign() const
 
 int Form::getGradeToExecute() const
 {
+
 	if (this->_grade_to_execute < 1)
 		throw Form::GradeTooHighException();
 	else if (this->_grade_to_execute > 150)
@@ -79,9 +82,16 @@ int Form::getGradeToExecute() const
 	return (this->_grade_to_execute);
 }
 
-/*==========EXCEPTIONS==========*/
+/*==========MEMBER FUNCTIONS==========*/
+void Form::beSigned(const Bureaucrat &b)
+{
+	if (b.getGrade() <= this->_grade_to_sign)
+		this->_signed = true;
+	else
+		throw Form::GradeTooLowException();
+}
 
- 
+/*==========EXCEPTIONS==========*/
 const char *Form::GradeTooHighException::what() const throw()
 {
 	return ("\e[0;35m[Form::GradeTooHighException] - GRADE TOO HIGH\033[0m");
@@ -99,10 +109,3 @@ std::ostream &operator<<(std::ostream &out, Form const &b)
 	return (out);
 }
 
-void Form::beSigned(const Bureaucrat &b)
-{
-	if (b.getGrade() <= this->_grade_to_sign)
-		this->_signed = true;
-	else
-		throw Form::GradeTooLowException();
-}

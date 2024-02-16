@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:27 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/13 16:58:34 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:26:29 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
 	return (*this);
 }
 
+/*destructor*/
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Destructor called" << std::endl;

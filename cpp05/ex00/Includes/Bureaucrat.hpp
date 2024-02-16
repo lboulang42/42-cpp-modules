@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:34 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/13 16:58:42 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:27:01 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ class Bureaucrat
 {
   	public:
 		/*==========CANONICAL==========*/
+		/*default constructor*/
 		Bureaucrat();
+		/*copy constructor*/
 		Bureaucrat(Bureaucrat &src);
+		/*operator = */
 		Bureaucrat &operator=(Bureaucrat const &src);
+		/*destructor*/
 		~Bureaucrat();
 		
 		/*==========OTHER CONSTRUCTOR==========*/

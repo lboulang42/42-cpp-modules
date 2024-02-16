@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:34 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/13 18:16:54 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:28:19 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,18 @@ class Form;
 
 class Bureaucrat
 {
-  	public:
+	public:
 		/*==========CANONICAL==========*/
+		/*default constructor*/
 		Bureaucrat();
+		/*copy constructor*/
 		Bureaucrat(Bureaucrat &src);
+		/*operator = */
 		Bureaucrat &operator=(Bureaucrat const &src);
+		/*destructor*/
 		~Bureaucrat();
 		
+		/*==========OTHER CONSTRUCTOR==========*/
 		Bureaucrat(const std::string name, int grade);
 		
 		/*==========GETTERS==========*/
@@ -38,6 +43,7 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 		void signForm(Form &form);
+
 		/*==========EXCEPTIONS==========*/
 		class GradeTooLowException : public std::exception
 		{
