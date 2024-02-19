@@ -6,7 +6,7 @@
 #    By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 17:59:57 by lboulang          #+#    #+#              #
-#    Updated: 2024/02/16 12:07:15 by lboulang         ###   ########.fr        #
+#    Updated: 2024/02/19 16:59:10 by lboulang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror -I Includes -MMD -MP
 #                                  MAKEFILE                                    #
 ################################################################################
 
-NAME = Bureaucrat
+NAME = ex00
 
 all : $(NAME)
 
