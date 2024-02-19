@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 18:08:48 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/17 17:13:57 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:59:42 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,21 @@
 template <typename T>
 void swap(T &a, T &b)
 {
-    T tmp = a;
-    a = b;
-    b = tmp;
+	T tmp = a;
+	a = b;
+	b = tmp;
 };
 
 template <typename T>
 T &min(T &a, T &b)
 {
-    return (a < b ? a : b);
+	return (a < b ? a : b);
 };
 
 template <typename T>
 T &max(T &a, T &b)
 {
-    return (a > b ? a : b);
+	return (a > b ? a : b);
 };
-
-// {
-//     T tmp = a;
-//     a = b;
-//     b = tmp;
-// };
-
-// T min(T &a, T &b);
-// {
-//     return (a < b ? a : b);
-// };
-
-// T max(T &a, T &b);
-// {
-//     return (a > b ? a : b);
-// };
 
 #endif
