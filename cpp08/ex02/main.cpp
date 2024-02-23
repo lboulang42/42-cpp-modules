@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:06:12 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/23 16:05:06 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:08:55 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	main(void)
 {
 	{
 		std::cout << "============================================" << std::endl;
-        std::cout << "MAIN FROM SUBJECT" << std::endl;
-        std::cout << "============================================" << std::endl;
+		std::cout << "MAIN FROM SUBJECT" << std::endl;
+		std::cout << "============================================" << std::endl;
 		MutantStack<int> mstack;
 		mstack.push(5);
 		mstack.push(17);
@@ -42,8 +42,8 @@ int	main(void)
 	}
 	{
 		std::cout << "============================================" << std::endl;
-        std::cout << "MAIN FROM SUBJECT USING LIST" << std::endl;
-        std::cout << "============================================" << std::endl;
+		std::cout << "MAIN FROM SUBJECT USING LIST" << std::endl;
+		std::cout << "============================================" << std::endl;
 		std::list<int> mstack_list;
 		mstack_list.push_back(5);
 		mstack_list.push_back(17);
