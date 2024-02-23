@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 20:54:25 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/21 21:19:03 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:47:37 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,81 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <algorithm>
 
 
 class Span
 {
-    public:
-        Span(unsigned int n);
-        Span(Span const &src);
-        ~Span();
-        Span &operator=(Span const &rhs);
-        void addNumber(int n);
-        int shortestSpan()
-        {
-            if (_size < 2)
-                throw std::exception();
-            
-        };
-        int longestSpan()
-        {
-            if (_size < 2)
-                throw std::exception();
-        };
-    private:
-        Span();
-        unsigned int _n;
-        unsigned int _size;
-        int *_array;
+	public:
+		/*==========CANONICAL==========*/
+		Span();
+		Span(Span const &src);
+		Span &operator=(Span const &rhs);
+		~Span();
+		
+		/*==========OTHER CONSTRUCTORS==========*/
+		Span(unsigned int n);
+		
+		/*==========MEMBER FUNCTIONS==========*/
+		void addNumber(int n);
+		void displaySpan(void);
+		int longestSpan(void);
+		int shortestSpan(void);
+		
+		/*==========EXCEPTIONS==========*/
+		class TooSmall : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+		
+		class Full : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+		
+		class SizeZero : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+		
+		class InvalidRange : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+		
+		class EmptyRange : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+		
+		class RangeTooLarge : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
+
+
+	private:
+		
+		size_t _size;
+		size_t _filled;
+		int    *_array;
 };
+
+template <typename Iterator>
+void IteratorAddNumber(Iterator begin, Iterator end, Span &span)
+{
+	if (begin > end)
+		throw Span::InvalidRange();
+	if (begin == end)
+		throw Span::EmptyRange();
+	for (Iterator it = begin; it != end; it++)
+		span.addNumber(it);
+}	
 
 #endif  

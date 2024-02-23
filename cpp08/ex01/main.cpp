@@ -6,37 +6,24 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:03:59 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/21 20:51:43 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:48:27 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "easyfind.hpp"
-#include <vector>
+#include "Span.hpp"
 
 int main()
 {
-   
     try
     {
-        std::cout << "============================================" << std::endl;
-        std::cout << "CHECKING FOR A VALUE IN THE VECTOR : " << std::endl;
-        std::cout << "============================================" << std::endl;
-        std::vector<int> v;
-        for (int i = 0; i < 10; i++)
-        {
-            v.push_back(i * 4); // 0 4 8 12 16 20 24 28 32 36
-        }
-        std::cout << "vector[7] = " << v.at(7) << std::endl << std::endl;
-        
-        int *ptr = easyfind(v, 28);
-        std::cout << "Value pointed by ptr returned by easyfind : " << *ptr << std::endl << std::endl;
-        
-        std::cout << "changing the value pointed by ptr to 12 should change the value in the vector" << std::endl;
-        *ptr = 12;
-        std::cout << "vector[7] after change = " << v.at(7) << std::endl;
-        std::cout << "============================================" << std::endl;
-        
+        Span s = Span(5);
+        s.addNumber(17);
+        s.addNumber(6);
+        s.addNumber(3);
+        s.addNumber(9);
+        s.addNumber(11);
+        std::cout << "shortest span = " << s.shortestSpan() << std::endl;
     }
     catch (std::exception &e)
     {
@@ -46,20 +33,37 @@ int main()
     try
     {
         std::cout << "============================================" << std::endl;
-        std::cout << "CHECKING FOR A VALUE NOT IN THE VECTOR : " << std::endl;
+        std::cout << "MAIN FROM SUBJECT" << std::endl;
         std::cout << "============================================" << std::endl;
-        std::vector<int> v;
-        for (int i = 0; i < 10; i++)
-        {
-            v.push_back(i); // 0 1 2 3 4 5 6 7 8 9
-        }
-        int *ptr = easyfind(v, 12);
-        std::cout << "value pointed by ptr returned by easyfind : " << *ptr << std::endl;
-        
+        Span sp = Span(5);
+        IteratorAddNumber(0, 5, sp);
+        std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;
     }
     catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << "alors" << std::endl;
+        Span *a = new Span(15);
+        IteratorAddNumber(0, 8, *a);
+        std::cout << "shortest span = " << a->shortestSpan() << std::endl;
+        std::cout << "longest span = " << a->longestSpan() << std::endl;
+        Span *b = new Span(*a);
+        delete a;
+        b->displaySpan();
+        Span c = *b;
+        delete b;
+        c.displaySpan();
+        Span d;
+        d.addNumber(1);
+    }
+    catch(std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+
     }
     
     return 0;
