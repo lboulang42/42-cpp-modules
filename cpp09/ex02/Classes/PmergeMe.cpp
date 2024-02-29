@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 12:23:53 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/26 18:18:19 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:40:25 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,3 +222,5 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 	(void)src;
 	return *this;
 }
+
+const char *PmergeMe::Error::what() const throw() { return ("\033[1;31mError\033[0m"); }

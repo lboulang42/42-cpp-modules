@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 12:05:23 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/26 18:11:51 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:39:25 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,8 @@ class PmergeMe
 		class Error : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("\033[1;31mError\033[0m");
-				}
+				virtual const char* what() const throw();
 		};
-		
 		void log(bool before);
 		
 	private:
@@ -52,17 +48,17 @@ class PmergeMe
 		std::vector<int> _leftVector;
 		std::vector<int> _rightVector;
 		std::vector<int> _sortedVector;
+		double _vectorTime;
+		
 		std::deque<int> _parsedDeque;
 		std::deque<int> _leftDeque;
 		std::deque<int> _rightDeque;
 		std::deque<int> _sortedDeque;
-		double _vectorTime;
 		double _dequeTime;
 };
 
 int  dequeBinarySearch(std::deque<int>& arr, int item, int low, int high);
 void dequeInsertSort(std::deque<int> &arr, int n);
-
 void vectorInsertSort(std::vector<int> &arr, int n);
 
 template<typename T>
