@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:27:04 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/27 16:40:57 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:40:30 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #include <sstream>
 #include <fstream>
 #include <map>
+#include <stdlib.h>
+#include <algorithm>
+#include <iostream>
+#include <iomanip>
 
 template<typename T>
 T FromString(const std::string& str)
@@ -59,20 +63,26 @@ class BTCExceptions
 class BitcoinExchange
 {
 	public:
-		BitcoinExchange(){};
 		BitcoinExchange(int ac, char **av);
-		~BitcoinExchange(){};
-		void parse(void){};
+		~BitcoinExchange();
+		BitcoinExchange(BitcoinExchange const &src);
+		BitcoinExchange&operator=(BitcoinExchange const &rhs);
+
 		void execute(void);
-		bool check_line(std::string &line);
-		void load_csv(std::ifstream &data);
-		std::string getval(int convertedYear, int convertedMonth, int convertedDay);
+		bool checkFileLine(std::string &line);
+		void loadCSV(void);
+		void loadFile(char *filename);
+		void checkDate(void);
+		void checkValue(void);
+		std::string getValueFromMap(int convertedYear, int convertedMonth, int convertedDay);
 		
 	private:
-		std::string _fullDate;
-		std::string _Value;
-		double 		_ValueDouble;
+		BitcoinExchange();
+		std::string _DateStr;
+		std::string _ValueStr;
+		float		_ValueFloat;
 		std::map<std::string, std::string> _data;
+		int _Year, _Month, _Day;
 };
 
 #endif

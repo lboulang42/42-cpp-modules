@@ -6,46 +6,17 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:26:58 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/27 19:28:05 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:46:09 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <stdlib.h>
-#include <algorithm>
-#include <iostream>     // std::cout, std::fixed
-#include <iomanip>      // std::setprecision
-/*
-parse date format
-parse date valide (time)
-parse value format
-parse value (entre 0 et max int)
 
-execute : 
-	- create a map with date as key and value as value
-	- print the map
-*/
+/*clean*/
 
-/*
-$> ./btc
-Error: could not open file.
-$> ./btc input.txt
-2011-01-03 => 3 = 0.9
-2011-01-03 => 2 = 0.6
-2011-01-03 => 1 = 0.3
-2011-01-03 => 1.2 = 0.36
-2011-01-09 => 1 = 0.32
-Error: not a positive number. (2012-01-11 | -1)
-Error: bad input => 2001-42-42 (2001-42-42)
-2012-01-11 => 1 = 7.1
-Error: too large a number. (2012-01-11 | 2147483648)
-*/
-
-
-
-
+/*check if date exist / could exist*/
 bool isDateValid(int year, int month, int day) {
-    if (year < 2009 || year > 2024)
+	if (year < 2009 || year > 2024)
 		return false;
 	if( month > 12 || day > 31 || month < 1 || day < 1)
 		return false;
@@ -55,13 +26,13 @@ bool isDateValid(int year, int month, int day) {
 		return false;
 	if (month == 2 && day == 29 && (year%100)%4 != 0)
 		return  false;
-    return true;
+	return true;
 }
 
+/*check if date format is YYYY-MM-DD*/
 bool isDateFormat(std::string &str)
 {
-	for (size_t i = 0; i < str.length(); i++)
-		{
+	for (size_t i = 0; i < str.length(); i++) {
 			if (i == 4 || i == 7)
 			{
 				if (str[i] != '-')
@@ -73,6 +44,20 @@ bool isDateFormat(std::string &str)
 	return (true);
 }
 
+/*convert year, month, day as string in date format*/
+std::string strtodate(int year, int month, int day)
+{
+	std::string tmp = ToString<int>(year) + "-";
+	if (month < 10)
+		tmp += "0";
+	tmp += ToString<int>(month) + "-";
+	if (day < 10)
+		tmp += "0";
+	tmp += ToString<int>(day);
+	return tmp;
+}
+
+/*check if value format is positive int / float*/
 bool isValueFormat(std::string &value)
 {
 	bool hasDecimalPoint = false;
@@ -90,8 +75,12 @@ bool isValueFormat(std::string &value)
 	return true;
 }
 
-void BitcoinExchange::load_csv(std::ifstream &data)
+/*load data.csv file*/
+void	BitcoinExchange::loadCSV(void)
 {
+	std::ifstream data("data.csv");
+	if (!data.is_open())
+		throw BTCExceptions::CSVExcept();
 	std::string linedata;
 	getline(data, linedata);
 	if (linedata != "date,exchange_rate")
@@ -109,42 +98,34 @@ void BitcoinExchange::load_csv(std::ifstream &data)
 		if (!isValueFormat(value))
 			throw BTCExceptions::CSVExcept();
 		_data[date] = value;
-	} 
+	}
+	data.close();
 }
 
-std::string strtodate(int year, int month, int day)
-{
-	std::string tmp = ToString<int>(year) + "-";
-	if (month < 10)
-		tmp += "0";
-	tmp += ToString<int>(month) + "-";
-	if (day < 10)
-		tmp += "0";
-	tmp += ToString<int>(day);
-	return tmp;
-}
-
-std::string BitcoinExchange::getval(int convertedYear, int convertedMonth, int convertedDay)
+/*get the value linked to the searched day from the map*/
+std::string BitcoinExchange::getValueFromMap(int _Year, int _Month, int _Day)
 {
 	std::string tmp;
 
-	for (int d = convertedDay-1; d > 0; d--)
+	/*check in the month*/
+	for (int d = _Day-1; d > 0; d--)
 	{
-		tmp = strtodate(convertedYear, convertedMonth, d);
+		tmp = strtodate(_Year, _Month, d);
 		if (_data.find(tmp) != _data.end())
 			return (_data[tmp]);
-	}	
-	
-	for (int m = convertedMonth-1; m > 0; m--)
+	}
+	/*check in the year*/
+	for (int m = _Month-1; m > 0; m--)
 	{
 		for (int d = 31; d > 0; d--)
 		{
-			tmp = strtodate(convertedYear, m, d);
+			tmp = strtodate(_Year, m, d);
 			if (_data.find(tmp) != _data.end())
 				return (_data[tmp]);
 		}
 	}
-	for (int y = convertedYear-1; y > 2008; y--)
+	/*check for multiple years*/
+	for (int y = _Year-1; y > 2008; y--)
 	{
 		for (int m = 12; m > 0; m--)
 		{
@@ -159,10 +140,51 @@ std::string BitcoinExchange::getval(int convertedYear, int convertedMonth, int c
 	return "";
 }
 
-
-bool	BitcoinExchange::check_line(std::string &line)
+/*get the btc price, multiply by quant and print it*/
+void BitcoinExchange::execute(void)
 {
-	//precheck for bad input
+	/*get the value in the map*/
+	std::string ValueFromMap = getValueFromMap(_Year, _Month, _Day);
+	try
+	{
+		if (ValueFromMap == "")
+			throw BTCExceptions::InvalidDate();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return ;
+	}
+
+	/*multiply price by quantity*/
+	float FinalValueFloat = std::atof(ValueFromMap.c_str()) * _ValueFloat;
+	/*To string for decimal precision in cout*/
+	std::string FinalValueStr = ToString<float>(FinalValueFloat);
+	/*Print result*/
+	std::cout << _DateStr << " => " << _ValueFloat << " = " << FinalValueStr << std::endl;
+}
+
+/*load the file specified as arg*/
+void BitcoinExchange::loadFile(char *filename)
+{
+	std::string line;
+	std::ifstream file(filename);
+	if (!file.is_open())
+		throw BTCExceptions::ReadExcept();
+	/*check file 'header'*/
+	getline(file, line);
+	if (line != "date | value")
+		throw BTCExceptions::FormatExcept();
+	// /*check each lines*/
+	while (getline(file, line))
+		if (checkFileLine(line))
+			execute();
+	file.close();
+}
+
+/*check for bad input in the file line*/
+bool fileBadInput(std::string &line)
+{
 	try
 	{
 		if (line.size() < 14)
@@ -175,98 +197,71 @@ bool	BitcoinExchange::check_line(std::string &line)
 		std::cerr << e.what() << line << "\033[0m" << std::endl;
 		return false;
 	}
+	return (true);
+}
 
-	this->_fullDate = line.substr(0, 10);
-	this->_Value = line.substr(13);
-	int convertedYear, convertedMonth, convertedDay;
+/*check the date format and the date validity*/
+void BitcoinExchange::checkDate()
+{
+	//check date format
+	if (!isDateFormat(_DateStr))
+		throw BTCExceptions::DateFormat();
+	//check if date exists
+	std::string tmp = _DateStr.substr(0, 4);
+	_Year = FromString<int>(tmp);
+	tmp = _DateStr.substr(5, 2);
+	_Month = FromString<int>(tmp);
+	tmp = _DateStr.substr(8, 2);
+	_Day = FromString<int>(tmp);
+	if (!isDateValid(_Year, _Month, _Day))
+		throw BTCExceptions::InvalidDate();
+}
+
+/*check the value format and validity*/
+void BitcoinExchange::checkValue()
+{
+	//check the value format
+	if (!isValueFormat(_ValueStr))
+		throw BTCExceptions::ValueFormat();
+	//check if value is in range;
+	this->_ValueFloat = FromString<float>(_ValueStr);
+	if (_ValueFloat < 0)
+		throw BTCExceptions::NegNumber();
+	if (_ValueFloat > 1000)
+		throw BTCExceptions::LargeNumber();
+}
+
+
+/*process each lines of the file*/
+bool	BitcoinExchange::checkFileLine(std::string &line)
+{
+	//precheck for bad input
+	if (!fileBadInput(line))
+		return (false);
+	this->_DateStr = line.substr(0, 10);
+	this->_ValueStr = line.substr(13);
 	try
 	{
-		//check date format
-		if (!isDateFormat(_fullDate))
-			throw BTCExceptions::DateFormat();
-		//check if date exists
-		std::string tmp = _fullDate.substr(0, 4);
-		convertedYear = FromString<int>(tmp);
-		tmp = _fullDate.substr(5, 2);
-		convertedMonth = FromString<int>(tmp);
-		tmp = _fullDate.substr(8, 2);
-		convertedDay = FromString<int>(tmp);
-		if (!isDateValid(convertedYear, convertedMonth, convertedDay))
-			throw BTCExceptions::InvalidDate();
-
-		//check the value format
-		if (!isValueFormat(_Value))
-			throw BTCExceptions::ValueFormat();
-		
-		//check if value should be accepted
-		this->_ValueDouble = FromString<double>(_Value);
-		if (_ValueDouble < 0)
-			throw BTCExceptions::NegNumber();
-		if (_ValueDouble > 1000)
-			throw BTCExceptions::LargeNumber();
+		checkDate();
+		checkValue();
 	}
 	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << '\n';
 		return (false);
 	}
-	
-	std::string valindata;
-	if (_data.find(_fullDate) != _data.end())
-		valindata = _data[_fullDate];
-	else
-	{
-		valindata = getval(convertedYear, convertedMonth, convertedDay);
-	}
-	int lenfrac = 0;	
-	if (valindata.find(".") != std::string::npos)
-	{
-		std::string tmp = valindata.substr(0, valindata.find("."));
-		std::string frac = valindata.substr(valindata.find(".")+1);
-		lenfrac = frac.length(); 
-	}
-	float val = std::atof(valindata.c_str());
-	float val2 = static_cast<float>(_ValueDouble);
-	// std::cout  << std::fixed << std::setprecision(lenfrac) << "val = " << val << " val2 = " << val2 << std::endl;
-	val = val * val2;
-	std::string allerfrr = ToString<float>(val);
-	std::cout << _fullDate << " => " << _ValueDouble << " = " << allerfrr << std::endl;
 	return (true);
 }
 
-void BitcoinExchange::execute(void)
-{
-}
-
-BitcoinExchange::BitcoinExchange(int ac, char **av) : _fullDate(""), _Value(""), _ValueDouble(0)
+BitcoinExchange::BitcoinExchange(int ac, char **av) : _DateStr(""), _ValueStr(""), _ValueFloat(0)
 {
 	/*open and read file*/
 	if (ac != 2)
 		throw BTCExceptions::OpenExcept();
-	std::ifstream file(av[1]);
-	if (!file.is_open())
-		throw BTCExceptions::ReadExcept();
-	/*check file 'header'*/
-	std::string line;
-	getline(file, line);
-	if (line != "date | value")
-		throw BTCExceptions::FormatExcept();
-	
-	//load data.csv
-	std::ifstream data("data.csv");
-	if (!data.is_open())
-		throw BTCExceptions::CSVExcept();
-	load_csv(data);
-	std::cout << "data.csv loaded" << std::endl;
-	data.close();
-
-	// /*check each lines*/
-	while (getline(file, line))
-	{
-		if (check_line(line))
-			execute();
-	}
-	file.close();
+	/*csv*/
+	loadCSV();
+	/*file*/
+	loadFile(av[1]);
 }
 
 /*==========EXCEPTIONS==========*/
@@ -280,3 +275,11 @@ const char *BTCExceptions::NegNumber::what() const throw() { return ("\033[1;31m
 const char *BTCExceptions::LargeNumber::what() const throw() { return ("\033[1;31mError : too large number.\033[0m"); }
 const char *BTCExceptions::InvalidDate::what() const throw() { return ("\033[1;31mError : Invalid Date. (either doesn't exist or out of our range)\033[0m"); }
 const char *BTCExceptions::CSVExcept::what() const throw() { return ("\033[1;31mError : Error In CSV file.\033[0m"); }
+
+/*==========CANON==========*/
+
+BitcoinExchange::~BitcoinExchange(){}
+BitcoinExchange::BitcoinExchange(){}
+BitcoinExchange::BitcoinExchange(BitcoinExchange const &src){*this = src;}
+BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange const &rhs){(void)rhs;return *this;}
+BTCExceptions& BTCExceptions::operator=(BTCExceptions const &rhs){(void)rhs;return *this;};

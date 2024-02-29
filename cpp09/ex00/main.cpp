@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:28:40 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/27 14:31:42 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:42:35 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ int main(int ac, char **av)
     try
     {
         BitcoinExchange exchange(ac, av);
-        exchange.parse();
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
-    
     return (0);
 }   
