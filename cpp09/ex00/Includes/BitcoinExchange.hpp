@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:27:04 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/29 12:40:30 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:21:44 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
+#include <math.h>
 
 template<typename T>
 T FromString(const std::string& str)

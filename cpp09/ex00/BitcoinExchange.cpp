@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:26:58 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/29 12:46:09 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:31:35 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,11 +155,12 @@ void BitcoinExchange::execute(void)
 		std::cerr << e.what() << '\n';
 		return ;
 	}
-
 	/*multiply price by quantity*/
 	float FinalValueFloat = std::atof(ValueFromMap.c_str()) * _ValueFloat;
 	/*To string for decimal precision in cout*/
 	std::string FinalValueStr = ToString<float>(FinalValueFloat);
+	if (FinalValueStr.find(".") != std::string::npos)
+		FinalValueStr =  FinalValueStr.substr(0, FinalValueStr.find(".") + 4);//round to avoid scienfic notation
 	/*Print result*/
 	std::cout << _DateStr << " => " << _ValueFloat << " = " << FinalValueStr << std::endl;
 }
