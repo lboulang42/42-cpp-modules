@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:25:55 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/26 11:55:12 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:34:01 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,3 +98,9 @@ void RPN::execute(void)
 	}
 	std::cout << this->_operationstack.top() << std::endl;
 }
+
+/*Exceptions*/
+const char *RPN::InvalidChar::what() const throw() { return ("\033[1;31mError : Invalid char in equation\033[0m"); }
+const char *RPN::ArgsNumber::what() const throw() { return ("\033[1;31mError : Run as : ./RPN \"equation in RPN notation.\"\033[0m"); }
+const char *RPN::ArgsEmpty::what() const throw() { return ("\033[1;31mError : Empty argument\033[0m"); }
+const char *RPN::InvalidEquation::what() const throw() { return ("\033[1;31mError : Invalid Equation / can't compute.\033[0m"); }
