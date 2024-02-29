@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:18:54 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/23 14:49:35 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:47:07 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*==========CANONICAL==========*/
 Span::Span(void)
 {
-	std::cout << "Span default constructor called" << std::endl;
 	this->_size = 0;
 	this->_filled = 0;
 	this->_array = new int[0];
@@ -23,7 +22,6 @@ Span::Span(void)
 
 Span::Span(Span const &src) : _size(src._size), _filled(src._filled)
 {
-	std::cout << "Span copy constructor called" << std::endl;
 	this->_array = new int[src._size];
 	for (size_t i = 0; i < src._filled; i++)
 		this->_array[i] = src._array[i];
@@ -31,7 +29,6 @@ Span::Span(Span const &src) : _size(src._size), _filled(src._filled)
 
 Span &Span::operator=(Span const &rhs)
 {
-	std::cout << "Span assignation operator called" << std::endl;
 	if (this != &rhs)
 	{
 		delete[] this->_array;
@@ -46,21 +43,18 @@ Span &Span::operator=(Span const &rhs)
 
 Span::~Span()
 {
-	std::cout << "Span destructor called" << std::endl;
 	delete[] this->_array;
 }
 
 /*==========OTHER CONSTRUCTORS==========*/
 Span::Span(unsigned int n) : _size(n), _filled(0)
 {
-	std::cout << "Span constructor with param called" << std::endl;
 	this->_array = new int[n];
 }
 
 /*==========MEMBER FUNCTIONS==========*/
 void Span::addNumber(int n)
 {
-	std::cout << "Span addNumber called" << std::endl;
 	if (_size == 0)
 		throw Span::SizeZero();
 	if (_filled == _size)

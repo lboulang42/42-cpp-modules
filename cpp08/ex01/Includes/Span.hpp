@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 20:54:25 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/23 14:47:37 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:44:24 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ class Span
 
 
 	private:
-		
 		size_t _size;
 		size_t _filled;
 		int    *_array;

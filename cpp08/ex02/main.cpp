@@ -6,7 +6,7 @@
 /*   By: lboulang <lboulang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:06:12 by lboulang          #+#    #+#             */
-/*   Updated: 2024/02/23 16:08:55 by lboulang         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:54:15 by lboulang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,14 @@ int	main(void)
 			std::cout << *it << std::endl;
 			++it;
 		}
-		std::list<int> s(mstack_list);
+		mstack_list.sort();
+		it = mstack_list.begin();
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
+
 	}
 	return (0);
 }
